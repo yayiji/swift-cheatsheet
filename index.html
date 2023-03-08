@@ -1,0 +1,2902 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Swift cheatsheet</title><style>:root {
+    --primary-color: #F05138;
+    --secondary-color: #F05138;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #F05138;
+        --secondary-color: #F05138;
+    }
+}</style><link rel="stylesheet" href="./css/colors.css"><link rel="stylesheet" href="./css/style.css"><link rel="stylesheet" href="./css/code.css"><link rel="icon" href="./img/Swift.ico"><link rel="shortcut icon" href="./img/Swift/favicon.ico"><link rel="apple-touch-icon" href="./img/Swift/apple-touch-icon.png"></head><body><header><h1><b>Swift</b> cheatsheet</h1><p>A complete <a href="https://en.wikipedia.org/wiki/Swift_(programming_language)" target="_blank">Swift</a> programming language reference for beginners.</p></header><section><a id="getting-started"></a><h2><a href="#getting-started" class="anchor">Getting started</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="getting-started/hello-world"></a><h3><a href="#getting-started/hello-world" class="anchor">hello world</a></h3><pre class="swift"><code><span class="comment">// FILE: main.swift</span>
+
+<span class="call">print</span>(<span class="string">"Hello, World!"</span>)
+
+<span class="comment">/**
+Run Swift files using the command line:
+
+$ swift main.swift
+&gt; Hello, World!
+*/</span></code></pre><div id="tooltip-1_1" class="tooltip"><textarea id="snippet-code-1_1" class="original-code">// FILE: main.swift
+
+print("Hello, World!")
+
+/**
+Run Swift files using the command line:
+
+$ swift main.swift
+> Hello, World!
+*/</textarea><button id="copy-button-1_1" onclick="copySnippet('1_1')">Copy</button></div><p class="note">You can install Swift by following the guides on <a href="https://www.swift.org/getting-started/" target="_blank">swift.org</a>.</p></div></div><div class="card"><div class="flex"><a id="getting-started/comments"></a><h3><a href="#getting-started/comments" class="anchor">comments</a></h3><pre class="swift"><code><span class="comment">// this is just a single line comment
+
+/**
+multi-line comments are fun :)
+            __
+           / _)
+    .-^^^-/ /
+ __/       /
+&lt;__.|_|-|_|
+*/</span></code></pre><div id="tooltip-1_2" class="tooltip"><textarea id="snippet-code-1_2" class="original-code">// this is just a single line comment
+
+/**
+multi-line comments are fun :)
+            __
+           / _)
+    .-^^^-/ /
+ __/       /
+<__.|_|-|_|
+*/</textarea><button id="copy-button-1_2" onclick="copySnippet('1_2')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/xcode/writing-symbol-documentation-in-your-source-files" target="_blank">Swift documentation</a></p></div></div><div class="card"><div class="flex"><a id="getting-started/print"></a><h3><a href="#getting-started/print" class="anchor">print</a></h3><pre class="swift"><code><span class="call">print</span>(<span class="string">"Hello, World!"</span>)
+<span class="comment">// =&gt; Hello, World!\n</span>
+
+<span class="call">print</span>(<span class="string">"Hello, World!"</span>, terminator: <span class="string">""</span>)
+<span class="comment">// =&gt; Hello, World!</span>
+
+<span class="call">print</span>(<span class="string">"foo"</span>, <span class="keyword">false</span>, <span class="number">42</span>, separator: <span class="string">", "</span>)
+<span class="comment">// =&gt; foo, false, 42</span></code></pre><div id="tooltip-1_3" class="tooltip"><textarea id="snippet-code-1_3" class="original-code">print("Hello, World!")
+// => Hello, World!\n
+
+print("Hello, World!", terminator: "")
+// => Hello, World!
+
+print("foo", false, 42, separator: ", ")
+// => foo, false, 42</textarea><button id="copy-button-1_3" onclick="copySnippet('1_3')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/print(_:separator:terminator:)" target="_blank">print</a></p></div></div><div class="card"><div class="flex"><a id="getting-started/constants-and-variables"></a><h3><a href="#getting-started/constants-and-variables" class="anchor">constants and variables</a></h3><pre class="swift"><code><span class="comment">// a constant</span>
+<span class="keyword">let</span> name: <span class="type">String</span> = <span class="string">"John"</span>
+<span class="call">print</span>(name) <span class="comment">// =&gt; John</span>
+
+name = <span class="string">"Bob"</span> <span class="comment">// =&gt; ERROR
+// Cannot assign to value:
+//     'name' is a 'let' constant
+
+// a variable</span>
+<span class="keyword">var</span> age: <span class="type">Int</span> = <span class="number">42</span>
+age = <span class="number">69</span>
+<span class="call">print</span>(age) <span class="comment">// =&gt; 69</span></code></pre><div id="tooltip-1_4" class="tooltip"><textarea id="snippet-code-1_4" class="original-code">// a constant
+let name: String = "John"
+print(name) // => John
+
+name = "Bob" // => ERROR
+// Cannot assign to value:
+//     'name' is a 'let' constant
+
+// a variable
+var age: Int = 42
+age = 69
+print(age) // => 69</textarea><button id="copy-button-1_4" onclick="copySnippet('1_4')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="getting-started/characters-and-strings"></a><h3><a href="#getting-started/characters-and-strings" class="anchor">characters and strings</a></h3><pre class="swift"><code><span class="keyword">let</span> emoji: <span class="type">Character</span> = <span class="string">"😅"</span>
+
+<span class="comment">// unicode representation of: ♥</span>
+<span class="keyword">let</span> blackHeart: <span class="type">Character</span> = <span class="string">"\u{2665}"</span>
+
+<span class="keyword">let</span> singleLine: <span class="type">String</span> = <span class="string">"Hello, World!"</span>
+
+<span class="keyword">let</span> multiLine: <span class="type">String</span> = <span class="string">"""
+Lorem ipsum
+dolor sit amet
+"""</span></code></pre><div id="tooltip-1_5" class="tooltip"><textarea id="snippet-code-1_5" class="original-code">let emoji: Character = "😅"
+
+// unicode representation of: ♥
+let blackHeart: Character = "\u{2665}"
+
+let singleLine: String = "Hello, World!"
+
+let multiLine: String = """
+Lorem ipsum
+dolor sit amet
+"""</textarea><button id="copy-button-1_5" onclick="copySnippet('1_5')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/character" target="_blank">Character</a>, <a href="https://developer.apple.com/documentation/swift/string" target="_blank">String</a></p></div></div><div class="card"><div class="flex"><a id="getting-started/string-interpolation"></a><h3><a href="#getting-started/string-interpolation" class="anchor">string interpolation</a></h3><pre class="swift"><code><span class="keyword">let</span> name = <span class="string">"John"</span>
+<span class="keyword">let</span> age = <span class="number">42</span>
+<span class="keyword">let</span> end = <span class="string">"years old."</span>
+
+<span class="comment">// String interpolation</span>
+<span class="call">print</span>(<span class="string">"</span>\(name) <span class="string">is</span> \(age) \(end)<span class="string">."</span>)
+<span class="comment">// =&gt; John is 42 years old.</span></code></pre><div id="tooltip-1_6" class="tooltip"><textarea id="snippet-code-1_6" class="original-code">let name = "John"
+let age = 42
+let end = "years old."
+
+// String interpolation
+print("\(name) is \(age) \(end).")
+// => John is 42 years old.</textarea><button id="copy-button-1_6" onclick="copySnippet('1_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html" target="_blank">Strings and Characters</a></p></div></div><div class="card"><div class="flex"><a id="getting-started/basic-data-types"></a><h3><a href="#getting-started/basic-data-types" class="anchor">basic data types</a></h3><pre class="swift"><code><span class="keyword">let</span> b: <span class="type">Bool</span> = <span class="keyword">false
+
+let</span> i: <span class="type">Int</span> = <span class="number">6</span>
+
+<span class="keyword">let</span> f: <span class="type">Float</span> = <span class="number">4.20</span>
+
+<span class="keyword">let</span> d: <span class="type">Double</span> = <span class="number">6.9</span>
+
+<span class="keyword">let</span> s: <span class="type">String</span> = <span class="string">"Lorem ipsum"</span></code></pre><div id="tooltip-1_7" class="tooltip"><textarea id="snippet-code-1_7" class="original-code">let b: Bool = false
+
+let i: Int = 6
+
+let f: Float = 4.20
+
+let d: Double = 6.9
+
+let s: String = "Lorem ipsum"</textarea><button id="copy-button-1_7" onclick="copySnippet('1_7')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/bool" target="_blank">Bool</a>, <a href="https://developer.apple.com/documentation/swift/int" target="_blank">Int</a>, <a href="https://developer.apple.com/documentation/swift/float" target="_blank">Float</a>, <a href="https://developer.apple.com/documentation/swift/double" target="_blank">Double</a>, <a href="https://developer.apple.com/documentation/swift/string" target="_blank">String</a></p></div></div><div class="card"><div class="flex"><a id="getting-started/type-safety"></a><h3><a href="#getting-started/type-safety" class="anchor">type safety</a></h3><pre class="swift"><code><span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">"John"</span>
+
+name = <span class="number">69</span> <span class="comment">// =&gt; ERROR
+// Cannot assign value of type
+//    'Int' to type 'String'</span>
+
+
+name = <span class="string">"Bob"</span> <span class="comment">// this will work</span></code></pre><div id="tooltip-1_8" class="tooltip"><textarea id="snippet-code-1_8" class="original-code">var name: String = "John"
+
+name = 69 // => ERROR
+// Cannot assign value of type
+//    'Int' to type 'String'
+
+
+name = "Bob" // this will work</textarea><button id="copy-button-1_8" onclick="copySnippet('1_8')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322" target="_blank">Type Safety and Type Inference</a></p></div></div><div class="card"><div class="flex"><a id="getting-started/type-inference"></a><h3><a href="#getting-started/type-inference" class="anchor">type inference</a></h3><pre class="swift"><code><span class="keyword">let</span> bool = <span class="keyword">false
+
+let</span> int = <span class="number">6</span>
+
+<span class="keyword">let</span> double = <span class="number">6.9</span>
+
+<span class="keyword">let</span> string = <span class="string">"Lorem ipsum"</span></code></pre><div id="tooltip-1_9" class="tooltip"><textarea id="snippet-code-1_9" class="original-code">let bool = false
+
+let int = 6
+
+let double = 6.9
+
+let string = "Lorem ipsum"</textarea><button id="copy-button-1_9" onclick="copySnippet('1_9')">Copy</button></div><p class="note">Swift <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322" target="_blank">infers</a> (automatically figures out) data types when assigning values to a constant or a variable.</p></div></div></div></section><section><a id="data-types"></a><h2><a href="#data-types" class="anchor">Data types</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="data-types/literals"></a><h3><a href="#data-types/literals" class="anchor">literals</a></h3><pre class="swift"><code><span class="comment">// bool</span>
+<span class="keyword">let</span> value = <span class="keyword">false</span>
+
+<span class="comment">// string</span>
+<span class="keyword">let</span> foo = <span class="string">"foo"</span>
+
+<span class="comment">// floating point</span>
+<span class="keyword">let</span> pi = <span class="number">3.14</span>
+
+<span class="comment">// integer</span>
+<span class="keyword">let</span> decimal = <span class="number">42</span>
+<span class="keyword">let</span> binary = 0b101010
+<span class="keyword">let</span> octal = 0o52
+<span class="keyword">let</span> hex = 0x2A
+<span class="keyword">let</span> oneBillion = <span class="number">1_000_000_000</span>
+
+<span class="comment">// other</span>
+<span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+<span class="keyword">let</span> dict = [<span class="string">"foo"</span>: <span class="number">42</span>, <span class="string">"bar"</span>: <span class="number">69</span>]
+<span class="keyword">let</span> tuple = (<span class="number">404</span>, <span class="string">"Not found"</span>)</code></pre><div id="tooltip-2_1" class="tooltip"><textarea id="snippet-code-2_1" class="original-code">// bool
+let value = false
+
+// string
+let foo = "foo"
+
+// floating point
+let pi = 3.14
+
+// integer
+let decimal = 42
+let binary = 0b101010
+let octal = 0o52
+let hex = 0x2A
+let oneBillion = 1_000_000_000
+
+// other
+let arr = [1, 2, 3]
+let dict = ["foo": 42, "bar": 69]
+let tuple = (404, "Not found")</textarea><button id="copy-button-2_1" onclick="copySnippet('2_1')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="data-types/type-of"></a><h3><a href="#data-types/type-of" class="anchor">type(of:)</a></h3><pre class="swift"><code><span class="call">print</span>(<span class="call">type</span>(of: <span class="number">1</span>))
+<span class="comment">// =&gt; Int</span>
+
+<span class="call">print</span>(<span class="call">type</span>(of: <span class="string">"foo"</span>))
+<span class="comment">// =&gt; String</span>
+
+<span class="call">print</span>(<span class="call">type</span>(of: <span class="keyword">false</span>))
+<span class="comment">// =&gt; Bool</span>
+
+<span class="call">print</span>(<span class="call">type</span>(of: <span class="number">3.14</span>))
+<span class="comment">// =&gt; Double</span></code></pre><div id="tooltip-2_2" class="tooltip"><textarea id="snippet-code-2_2" class="original-code">print(type(of: 1))
+// => Int
+
+print(type(of: "foo"))
+// => String
+
+print(type(of: false))
+// => Bool
+
+print(type(of: 3.14))
+// => Double</textarea><button id="copy-button-2_2" onclick="copySnippet('2_2')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/type(of:)" target="_blank">type(of:)</a></p></div></div><div class="card"><div class="flex"><a id="data-types/optionals"></a><h3><a href="#data-types/optionals" class="anchor">optionals</a></h3><pre class="swift"><code><span class="keyword">var</span> success: <span class="type">Bool</span>? = <span class="keyword">false
+var</span> responseCode: <span class="type">Int</span>?
+<span class="keyword">var</span> error: <span class="type">Optional</span>&lt;<span class="type">String</span>&gt; = <span class="keyword">nil</span>
+
+print(responseCode) <span class="comment">// nil</span>
+
+responseCode = <span class="number">404</span>
+error = <span class="string">"Something went wrong"</span>
+
+<span class="call">print</span>(success) <span class="comment">// =&gt; Optional(false)</span>
+<span class="call">print</span>(responseCode) <span class="comment">// =&gt; Optional(404)</span></code></pre><div id="tooltip-2_3" class="tooltip"><textarea id="snippet-code-2_3" class="original-code">var success: Bool? = false
+var responseCode: Int?
+var error: Optional<String> = nil
+
+print(responseCode) // nil
+
+responseCode = 404
+error = "Something went wrong"
+
+print(success) // => Optional(false)
+print(responseCode) // => Optional(404)</textarea><button id="copy-button-2_3" onclick="copySnippet('2_3')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/optional" target="_blank">Optional</a></p></div></div><div class="card"><div class="flex"><a id="data-types/arrays"></a><h3><a href="#data-types/arrays" class="anchor">arrays</a></h3><pre class="swift"><code><span class="comment">// an array of Int elements</span>
+<span class="keyword">let</span> numbers: <span class="type">Array</span>&lt;<span class="type">Int</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+
+<span class="comment">// an array of String elements</span>
+<span class="keyword">let</span> names: [<span class="type">String</span>] = [<span class="string">"Joe"</span>, <span class="string">"Bob"</span>]
+
+<span class="comment">// an empty array of Strings</span>
+<span class="keyword">var</span> empty: [<span class="type">String</span>] = []
+
+<span class="comment">// an array of Doubles</span>
+<span class="keyword">var</span> mathConstants = [<span class="number">3.14</span>, <span class="number">2.71</span>, <span class="number">0.57</span>]
+
+<span class="comment">// array of Any types</span>
+<span class="keyword">var</span> array: [<span class="type">Any</span>] = [<span class="number">1</span>, <span class="string">"foo"</span>, <span class="keyword">false</span>, <span class="number">3.14</span>]</code></pre><div id="tooltip-2_4" class="tooltip"><textarea id="snippet-code-2_4" class="original-code">// an array of Int elements
+let numbers: Array<Int> = [1, 2, 3, 4, 5]
+
+// an array of String elements
+let names: [String] = ["Joe", "Bob"]
+
+// an empty array of Strings
+var empty: [String] = []
+
+// an array of Doubles
+var mathConstants = [3.14, 2.71, 0.57]
+
+// array of Any types
+var array: [Any] = [1, "foo", false, 3.14]</textarea><button id="copy-button-2_4" onclick="copySnippet('2_4')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/array" target="_blank">Array</a></p></div></div><div class="card"><div class="flex"><a id="data-types/sets"></a><h3><a href="#data-types/sets" class="anchor">sets</a></h3><pre class="swift"><code><span class="comment">// a set of unique Int values</span>
+<span class="keyword">let</span> values: <span class="type">Set</span>&lt;<span class="type">Int</span>&gt; = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>]
+
+<span class="call">print</span>(values)
+<span class="comment">// =&gt; [3, 2, 5, 1] (or different)
+
+// a set of String values</span>
+<span class="keyword">let</span> names: <span class="type">Set</span> = [<span class="string">"John"</span>, <span class="string">"Bob"</span>]
+
+<span class="comment">// an empty set of Strings</span>
+<span class="keyword">var</span> empty: <span class="type">Set</span>&lt;<span class="type">String</span>&gt; = []</code></pre><div id="tooltip-2_5" class="tooltip"><textarea id="snippet-code-2_5" class="original-code">// a set of unique Int values
+let values: Set<Int> = [1, 1, 2, 3, 3, 5]
+
+print(values)
+// => [3, 2, 5, 1] (or different)
+
+// a set of String values
+let names: Set = ["John", "Bob"]
+
+// an empty set of Strings
+var empty: Set<String> = []</textarea><button id="copy-button-2_5" onclick="copySnippet('2_5')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/set" target="_blank">Set</a></p></div></div><div class="card"><div class="flex"><a id="data-types/dictionaries"></a><h3><a href="#data-types/dictionaries" class="anchor">dictionaries</a></h3><pre class="swift"><code><span class="keyword">var</span> responses: <span class="type">Dictionary</span>&lt;<span class="type">Int</span>, <span class="type">String</span>&gt; = [
+    <span class="number">200</span>: <span class="string">"Ok"</span>,
+    <span class="number">404</span>: <span class="string">"Not found"</span>,
+    <span class="number">500</span>: <span class="string">"Internal server error"</span>,
+]
+
+<span class="keyword">let</span> scores: [<span class="type">String</span>: <span class="type">Double</span>] = [
+    <span class="string">"John"</span>: <span class="number">42.1</span>,
+    <span class="string">"Bob"</span>: <span class="number">31.6</span>,
+]
+
+<span class="keyword">var</span> empty: [<span class="type">String</span>: <span class="type">String</span>] = [:]</code></pre><div id="tooltip-2_6" class="tooltip"><textarea id="snippet-code-2_6" class="original-code">var responses: Dictionary<Int, String> = [
+    200: "Ok",
+    404: "Not found",
+    500: "Internal server error",
+]
+
+let scores: [String: Double] = [
+    "John": 42.1,
+    "Bob": 31.6,
+]
+
+var empty: [String: String] = [:]</textarea><button id="copy-button-2_6" onclick="copySnippet('2_6')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/dictionary" target="_blank">Dictionary</a></p></div></div><div class="card"><div class="flex"><a id="data-types/tuples"></a><h3><a href="#data-types/tuples" class="anchor">tuples</a></h3><pre class="swift"><code><span class="keyword">var</span> constants: (<span class="type">Double</span>, <span class="type">Double</span>, <span class="type">Double</span>) = (
+    <span class="number">3.14159</span>,
+    <span class="number">2.71828</span>,
+    <span class="number">0.57721</span>
+)
+<span class="call">print</span>(constants.<span class="number">0</span>, constants.<span class="number">1</span>, constant.<span class="number">2</span>)
+<span class="comment">// =&gt; 3.14159 2.71828 0.57721</span>
+
+constants.<span class="number">0</span> = <span class="number">4.20</span>
+
+<span class="call">print</span>(constants.<span class="number">0</span>) <span class="comment">// =&gt; 4.20</span>
+
+<span class="keyword">var</span> result = (
+    code: <span class="number">404</span>,
+    error: <span class="string">"Not found"</span>
+)
+<span class="call">print</span>(result.<span class="property">error</span>) <span class="comment">// Not found</span>
+
+result.<span class="property">code</span> = <span class="number">200</span></code></pre><div id="tooltip-2_7" class="tooltip"><textarea id="snippet-code-2_7" class="original-code">var constants: (Double, Double, Double) = (
+    3.14159,
+    2.71828,
+    0.57721
+)
+print(constants.0, constants.1, constant.2)
+// => 3.14159 2.71828 0.57721
+
+constants.0 = 4.20
+
+print(constants.0) // => 4.20
+
+var result = (
+    code: 404,
+    error: "Not found"
+)
+print(result.error) // Not found
+
+result.code = 200</textarea><button id="copy-button-2_7" onclick="copySnippet('2_7')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="data-types/signed-integers"></a><h3><a href="#data-types/signed-integers" class="anchor">signed integers</a></h3><pre class="swift"><code><span class="keyword">let</span> i: <span class="type">Int</span> <span class="comment">// 32 or 64 bit</span>
+
+<span class="keyword">let</span> i1: <span class="type">Int8</span> <span class="comment">// 8 bit</span>
+<span class="keyword">let</span> i2: <span class="type">Int16</span> <span class="comment">// 16 bit</span>
+<span class="keyword">let</span> i3: <span class="type">Int32</span> <span class="comment">// 32 bit</span>
+<span class="keyword">let</span> i4: <span class="type">Int64</span> <span class="comment">// 64 bit
+
+// you can get min and max values</span>
+<span class="call">print</span>(<span class="type">Int8</span>.<span class="property">min</span>) <span class="comment">// =&gt; -128</span>
+<span class="call">print</span>(<span class="type">Int8</span>.<span class="property">max</span>) <span class="comment">// =&gt; 127</span></code></pre><div id="tooltip-2_8" class="tooltip"><textarea id="snippet-code-2_8" class="original-code">let i: Int // 32 or 64 bit
+
+let i1: Int8 // 8 bit
+let i2: Int16 // 16 bit
+let i3: Int32 // 32 bit
+let i4: Int64 // 64 bit
+
+// you can get min and max values
+print(Int8.min) // => -128
+print(Int8.max) // => 127</textarea><button id="copy-button-2_8" onclick="copySnippet('2_8')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/int" target="_blank">Int</a>, <a href="https://developer.apple.com/documentation/swift/int8" target="_blank">Int8</a>, <a href="https://developer.apple.com/documentation/swift/int16" target="_blank">Int16</a>, <a href="https://developer.apple.com/documentation/swift/int32" target="_blank">Int32</a>, <a href="https://developer.apple.com/documentation/swift/int64" target="_blank">Int64</a></p></div></div><div class="card"><div class="flex"><a id="data-types/unsigned-integers"></a><h3><a href="#data-types/unsigned-integers" class="anchor">unsigned integers</a></h3><pre class="swift"><code><span class="keyword">let</span> u: <span class="type">UInt</span> <span class="comment">// 32 or 64 bit</span>
+<span class="keyword">let</span> u1: <span class="type">UInt8</span> <span class="comment">// 8 bit</span>
+<span class="keyword">let</span> u2: <span class="type">UInt16</span> <span class="comment">// 16 bit</span>
+<span class="keyword">let</span> u3: <span class="type">UInt32</span> <span class="comment">// 32 bit</span>
+<span class="keyword">let</span> u4: <span class="type">UInt64</span> <span class="comment">// 64 bit</span>
+
+<span class="call">print</span>(<span class="type">UInt8</span>.<span class="property">min</span>) <span class="comment">// =&gt; 0</span>
+<span class="call">print</span>(<span class="type">UInt8</span>.<span class="property">max</span>) <span class="comment">// =&gt; 255</span></code></pre><div id="tooltip-2_9" class="tooltip"><textarea id="snippet-code-2_9" class="original-code">let u: UInt // 32 or 64 bit
+let u1: UInt8 // 8 bit
+let u2: UInt16 // 16 bit
+let u3: UInt32 // 32 bit
+let u4: UInt64 // 64 bit
+
+print(UInt8.min) // => 0
+print(UInt8.max) // => 255</textarea><button id="copy-button-2_9" onclick="copySnippet('2_9')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/uint" target="_blank">UInt</a>, <a href="https://developer.apple.com/documentation/swift/uint8" target="_blank">UInt8</a>, <a href="https://developer.apple.com/documentation/swift/uint16" target="_blank">UInt16</a>, <a href="https://developer.apple.com/documentation/swift/uint32" target="_blank">UInt32</a>, <a href="https://developer.apple.com/documentation/swift/uint64" target="_blank">UInt64</a></p></div></div></div></section><section><a id="operators"></a><h2><a href="#operators" class="anchor">Operators</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="operators/assignment"></a><h3><a href="#operators/assignment" class="anchor">assignment</a></h3><pre class="swift"><code><span class="keyword">let</span> a = <span class="string">"foo"</span>
+<span class="keyword">var</span> b = <span class="number">42</span>
+<span class="keyword">let</span> c = <span class="number">69</span>
+
+b = c
+
+<span class="call">print</span>(b) <span class="comment">// =&gt; 69</span></code></pre><div id="tooltip-3_1" class="tooltip"><textarea id="snippet-code-3_1" class="original-code">let a = "foo"
+var b = 42
+let c = 69
+
+b = c
+
+print(b) // => 69</textarea><button id="copy-button-3_1" onclick="copySnippet('3_1')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID62" target="_blank">Assignment Operator</a></p></div></div><div class="card"><div class="flex"><a id="operators/arithmetic"></a><h3><a href="#operators/arithmetic" class="anchor">arithmetic</a></h3><pre class="swift"><code><span class="keyword">let</span> x = <span class="number">5</span>
+<span class="keyword">let</span> y = <span class="number">5</span>
+<span class="keyword">var</span> z = <span class="number">0</span>
+
+z = x + y <span class="comment">// addition</span>
+<span class="call">print</span>(z) <span class="comment">// =&gt; 10</span>
+
+z = x - y <span class="comment">// subtraction</span>
+<span class="call">print</span>(z) <span class="comment">// =&gt; 0</span>
+
+z = x * y <span class="comment">// multiplication</span>
+<span class="call">print</span>(z) <span class="comment">// =&gt; 25</span>
+
+z = x / y <span class="comment">// division</span>
+<span class="call">print</span>(z) <span class="comment">// =&gt; 1</span></code></pre><div id="tooltip-3_2" class="tooltip"><textarea id="snippet-code-3_2" class="original-code">let x = 5
+let y = 5
+var z = 0
+
+z = x + y // addition
+print(z) // => 10
+
+z = x - y // subtraction
+print(z) // => 0
+
+z = x * y // multiplication
+print(z) // => 25
+
+z = x / y // division
+print(z) // => 1</textarea><button id="copy-button-3_2" onclick="copySnippet('3_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID63" target="_blank">Arithmetic Operators</a></p></div></div><div class="card"><div class="flex"><a id="operators/compound-assignment"></a><h3><a href="#operators/compound-assignment" class="anchor">compound assignment</a></h3><pre class="swift"><code><span class="keyword">var</span> x = <span class="number">10</span>
+
+x += <span class="number">2</span> <span class="comment">// addition</span>
+<span class="call">print</span>(x) <span class="comment">// =&gt; 12</span>
+
+x -= <span class="number">2</span> <span class="comment">// subtraction</span>
+<span class="call">print</span>(x) <span class="comment">// =&gt; 10</span>
+
+x *= <span class="number">2</span> <span class="comment">// multiplication</span>
+<span class="call">print</span>(x) <span class="comment">// =&gt; 20</span>
+
+x /= <span class="number">2</span> <span class="comment">// division</span>
+<span class="call">print</span>(x) <span class="comment">// =&gt; 10</span></code></pre><div id="tooltip-3_3" class="tooltip"><textarea id="snippet-code-3_3" class="original-code">var x = 10
+
+x += 2 // addition
+print(x) // => 12
+
+x -= 2 // subtraction
+print(x) // => 10
+
+x *= 2 // multiplication
+print(x) // => 20
+
+x /= 2 // division
+print(x) // => 10</textarea><button id="copy-button-3_3" onclick="copySnippet('3_3')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID69" target="_blank">Compound Assignment Operators</a></p></div></div><div class="card"><div class="flex"><a id="operators/comparison"></a><h3><a href="#operators/comparison" class="anchor">comparison</a></h3><pre class="swift"><code><span class="keyword">let</span> x = <span class="number">6</span>
+<span class="keyword">let</span> y = <span class="number">9</span>
+<span class="keyword">var</span> z = <span class="keyword">false</span>
+
+z = x == y <span class="comment">// equal</span>
+<span class="call">print</span>(z) <span class="comment">// false</span>
+
+z = x != y <span class="comment">// not equal</span>
+<span class="call">print</span>(z) <span class="comment">// true</span>
+
+z = x &gt; y <span class="comment">// greater than</span>
+<span class="call">print</span>(z) <span class="comment">// false</span>
+
+z = x &gt;= y <span class="comment">// greater than or equal</span>
+<span class="call">print</span>(z) <span class="comment">// false</span>
+
+z = x &lt; y <span class="comment">// less than</span>
+<span class="call">print</span>(z) <span class="comment">// true</span>
+
+z = x &lt;= y <span class="comment">// less than or equal</span>
+<span class="call">print</span>(z) <span class="comment">// true</span></code></pre><div id="tooltip-3_4" class="tooltip"><textarea id="snippet-code-3_4" class="original-code">let x = 6
+let y = 9
+var z = false
+
+z = x == y // equal
+print(z) // false
+
+z = x != y // not equal
+print(z) // true
+
+z = x > y // greater than
+print(z) // false
+
+z = x >= y // greater than or equal
+print(z) // false
+
+z = x < y // less than
+print(z) // true
+
+z = x <= y // less than or equal
+print(z) // true</textarea><button id="copy-button-3_4" onclick="copySnippet('3_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID70" target="_blank">Comparison Operators</a></p></div></div><div class="card"><div class="flex"><a id="operators/ternary-conditional"></a><h3><a href="#operators/ternary-conditional" class="anchor">ternary conditional</a></h3><pre class="swift"><code><span class="keyword">let</span> x = <span class="number">12</span>
+<span class="keyword">let</span> result1 = x &gt; <span class="number">10</span> ? <span class="string">"win"</span> : <span class="string">"lose"</span>
+<span class="call">print</span>(<span class="string">"You "</span> + result2)
+<span class="comment">// =&gt; You win</span>
+
+<span class="keyword">let</span> y = <span class="number">7</span>
+<span class="keyword">let</span> result2 = y &gt; <span class="number">10</span> ? <span class="string">"win"</span> : <span class="string">"lose"</span>
+<span class="call">print</span>(<span class="string">"You "</span> + result2)
+<span class="comment">// =&gt; You lose</span></code></pre><div id="tooltip-3_5" class="tooltip"><textarea id="snippet-code-3_5" class="original-code">let x = 12
+let result1 = x > 10 ? "win" : "lose"
+print("You " + result2)
+// => You win
+
+let y = 7
+let result2 = y > 10 ? "win" : "lose"
+print("You " + result2)
+// => You lose</textarea><button id="copy-button-3_5" onclick="copySnippet('3_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID71" target="_blank">Ternary Conditional Operator</a></p></div></div><div class="card"><div class="flex"><a id="operators/nil-coalescing"></a><h3><a href="#operators/nil-coalescing" class="anchor">nil-coalescing</a></h3><pre class="swift"><code><span class="keyword">let</span> error1: <span class="type">String</span>? = <span class="string">"Server error"</span>
+<span class="keyword">let</span> message1 = error1 ?? <span class="string">"Unknown error"</span>
+<span class="call">print</span>(message1)
+<span class="comment">// =&gt; Server error</span>
+
+<span class="keyword">let</span> error2: <span class="type">String</span>? = <span class="keyword">nil
+let</span> message2 = error2 ?? <span class="string">"Unknown error"</span>
+<span class="call">print</span>(message2)
+<span class="comment">// =&gt; Unknown error</span></code></pre><div id="tooltip-3_6" class="tooltip"><textarea id="snippet-code-3_6" class="original-code">let error1: String? = "Server error"
+let message1 = error1 ?? "Unknown error"
+print(message1)
+// => Server error
+
+let error2: String? = nil
+let message2 = error2 ?? "Unknown error"
+print(message2)
+// => Unknown error</textarea><button id="copy-button-3_6" onclick="copySnippet('3_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID72" target="_blank">Nil-Coalescing Operator</a></p></div></div><div class="card"><div class="flex"><a id="operators/range"></a><h3><a href="#operators/range" class="anchor">range</a></h3><pre class="swift"><code><span class="comment">// closed range</span>
+<span class="keyword">let</span> a = <span class="number">1</span>...<span class="number">5</span>
+
+<span class="comment">// half open range</span>
+<span class="keyword">let</span> b = <span class="number">0</span>..&lt;<span class="number">9</span>
+
+<span class="comment">// one-sided ranges</span>
+<span class="keyword">let</span> c = <span class="number">2</span>...
+<span class="keyword">let</span> d = ...<span class="number">2</span>
+<span class="keyword">let</span> e = ..&lt;<span class="number">2</span></code></pre><div id="tooltip-3_7" class="tooltip"><textarea id="snippet-code-3_7" class="original-code">// closed range
+let a = 1...5
+
+// half open range
+let b = 0..<9
+
+// one-sided ranges
+let c = 2...
+let d = ...2
+let e = ..<2</textarea><button id="copy-button-3_7" onclick="copySnippet('3_7')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID73" target="_blank">Range Operators</a></p></div></div><div class="card"><div class="flex"><a id="operators/logical"></a><h3><a href="#operators/logical" class="anchor">logical</a></h3><pre class="swift"><code><span class="keyword">let</span> x = <span class="keyword">true
+let</span> y = <span class="keyword">false</span>
+
+<span class="comment">// NOT</span>
+<span class="keyword">let</span> r1 = !x
+<span class="call">print</span>(r1) <span class="comment">// =&gt; false
+
+// AND</span>
+<span class="keyword">let</span> r2 = x &amp;&amp; y
+<span class="call">print</span>(r2) <span class="comment">// =&gt; false
+
+// OR</span>
+<span class="keyword">let</span> r3 = x || y
+<span class="call">print</span>(r3) <span class="comment">// =&gt; true</span></code></pre><div id="tooltip-3_8" class="tooltip"><textarea id="snippet-code-3_8" class="original-code">let x = true
+let y = false
+
+// NOT
+let r1 = !x
+print(r1) // => false
+
+// AND
+let r2 = x && y
+print(r2) // => false
+
+// OR
+let r3 = x || y
+print(r3) // => true</textarea><button id="copy-button-3_8" onclick="copySnippet('3_8')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID76" target="_blank">Logical Operators</a></p></div></div><div class="card"><div class="flex"><a id="operators/other"></a><h3><a href="#operators/other" class="anchor">other</a></h3><pre class="swift"><code><span class="comment">// String concatenation</span>
+<span class="call">print</span>(<span class="string">"foo"</span> + <span class="string">" "</span> + <span class="string">"bar"</span>) <span class="comment">// =&gt; foo bar
+
+// remainder</span>
+<span class="call">print</span>(<span class="number">10</span> % <span class="number">6</span>) <span class="comment">// =&gt; 4
+
+// unary plus</span>
+<span class="call">print</span>(+<span class="number">42</span>) <span class="comment">// =&gt; 42
+
+// unary minus</span>
+<span class="call">print</span>(-<span class="number">69</span>) <span class="comment">// =&gt; -69</span></code></pre><div id="tooltip-3_9" class="tooltip"><textarea id="snippet-code-3_9" class="original-code">// String concatenation
+print("foo" + " " + "bar") // => foo bar
+
+// remainder
+print(10 % 6) // => 4
+
+// unary plus
+print(+42) // => 42
+
+// unary minus
+print(-69) // => -69</textarea><button id="copy-button-3_9" onclick="copySnippet('3_9')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html" target="_blank">Operators</a></p></div></div></div></section><section><a id="control-flow"></a><h2><a href="#control-flow" class="anchor">Control flow</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="control-flow/if"></a><h3><a href="#control-flow/if" class="anchor">if</a></h3><pre class="swift"><code><span class="keyword">var</span> isItRaining = <span class="keyword">true
+
+if</span> isItRaining {
+    <span class="call">print</span>(<span class="string">"Take an umbrella."</span>)
+}
+
+<span class="comment">// =&gt; Take an umbrella.</span></code></pre><div id="tooltip-4_1" class="tooltip"><textarea id="snippet-code-4_1" class="original-code">var isItRaining = true
+
+if isItRaining {
+    print("Take an umbrella.")
+}
+
+// => Take an umbrella.</textarea><button id="copy-button-4_1" onclick="copySnippet('4_1')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID435" target="_blank">If Statement</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/if-else"></a><h3><a href="#control-flow/if-else" class="anchor">if-else</a></h3><pre class="swift"><code><span class="keyword">var</span> score = <span class="number">4</span>
+
+<span class="keyword">if</span> score &gt; <span class="number">5</span> {
+    <span class="call">print</span>(<span class="string">"Great job."</span>)
+}
+<span class="keyword">else</span> {
+    <span class="call">print</span>(<span class="string">"Nice try."</span>)
+}
+
+<span class="comment">// =&gt; Nice try.</span></code></pre><div id="tooltip-4_2" class="tooltip"><textarea id="snippet-code-4_2" class="original-code">var score = 4
+
+if score > 5 {
+    print("Great job.")
+}
+else {
+    print("Nice try.")
+}
+
+// => Nice try.</textarea><button id="copy-button-4_2" onclick="copySnippet('4_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID435" target="_blank">If Statement</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/if-elseif-else"></a><h3><a href="#control-flow/if-elseif-else" class="anchor">if-elseif-else</a></h3><pre class="swift"><code><span class="keyword">var</span> score = <span class="number">3</span>
+
+<span class="keyword">if</span> score &gt; <span class="number">5</span> {
+    <span class="call">print</span>(<span class="string">"Great job."</span>)
+}
+<span class="keyword">else if</span> score &gt; <span class="number">2</span> {
+    <span class="call">print</span>(<span class="string">"Not bad."</span>)
+}
+<span class="keyword">else</span> {
+    <span class="call">print</span>(<span class="string">"Nice try."</span>)
+}
+
+<span class="comment">// =&gt; Not bad.</span></code></pre><div id="tooltip-4_3" class="tooltip"><textarea id="snippet-code-4_3" class="original-code">var score = 3
+
+if score > 5 {
+    print("Great job.")
+}
+else if score > 2 {
+    print("Not bad.")
+}
+else {
+    print("Nice try.")
+}
+
+// => Not bad.</textarea><button id="copy-button-4_3" onclick="copySnippet('4_3')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID435" target="_blank">If Statement</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/guard"></a><h3><a href="#control-flow/guard" class="anchor">guard</a></h3><pre class="swift"><code><span class="keyword">var</span> score = <span class="number">3</span>
+<span class="keyword">guard</span> score &gt; <span class="number">1</span> <span class="keyword">else</span> {
+    <span class="call">fatalError</span>(<span class="string">"You've failed."</span>)
+}
+<span class="call">print</span>(<span class="string">"You've passed."</span>)
+
+<span class="comment">// =&gt; You've passed.</span></code></pre><div id="tooltip-4_4" class="tooltip"><textarea id="snippet-code-4_4" class="original-code">var score = 3
+guard score > 1 else {
+    fatalError("You've failed.")
+}
+print("You've passed.")
+
+// => You've passed.</textarea><button id="copy-button-4_4" onclick="copySnippet('4_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID524" target="_blank">Guard Statement</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/switch"></a><h3><a href="#control-flow/switch" class="anchor">switch</a></h3><pre class="swift"><code><span class="keyword">var</span> statusCode = <span class="number">404</span>
+
+<span class="keyword">switch</span> statusCode {
+<span class="keyword">case</span> <span class="number">200</span>:
+    <span class="call">print</span>(<span class="string">"Ok"</span>)
+<span class="keyword">case</span> <span class="number">404</span>:
+    <span class="call">print</span>(<span class="string">"Not found"</span>)
+<span class="keyword">default</span>:
+    <span class="call">print</span>(statusCode)
+}
+
+<span class="comment">// =&gt; Not found</span></code></pre><div id="tooltip-4_5" class="tooltip"><textarea id="snippet-code-4_5" class="original-code">var statusCode = 404
+
+switch statusCode {
+case 200:
+    print("Ok")
+case 404:
+    print("Not found")
+default:
+    print(statusCode)
+}
+
+// => Not found</textarea><button id="copy-button-4_5" onclick="copySnippet('4_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID436" target="_blank">Switch Statement</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/optional-binding"></a><h3><a href="#control-flow/optional-binding" class="anchor">optional binding</a></h3><pre class="swift"><code><span class="keyword">var</span> possibleName: <span class="type">String</span>? = <span class="string">"John"</span>
+
+<span class="keyword">if let</span> name = possibleName {
+    <span class="call">print</span>(name) <span class="comment">// =&gt; John</span>
+}
+
+<span class="keyword">if let</span> possibleName {
+    <span class="call">print</span>(possibleName) <span class="comment">// =&gt; John</span>
+}
+
+<span class="keyword">guard let</span> name = possibleName <span class="keyword">else</span> {
+    <span class="call">fatalError</span>(<span class="string">"Missing name"</span>)
+}
+<span class="call">print</span>(<span class="string">"Hello,</span> \(name)<span class="string">!"</span>)
+<span class="comment">// =&gt; Hello, John!</span></code></pre><div id="tooltip-4_6" class="tooltip"><textarea id="snippet-code-4_6" class="original-code">var possibleName: String? = "John"
+
+if let name = possibleName {
+    print(name) // => John
+}
+
+if let possibleName {
+    print(possibleName) // => John
+}
+
+guard let name = possibleName else {
+    fatalError("Missing name")
+}
+print("Hello, \(name)!")
+// => Hello, John!</textarea><button id="copy-button-4_6" onclick="copySnippet('4_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID333" target="_blank">Optional binding</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/for-in"></a><h3><a href="#control-flow/for-in" class="anchor">for-in</a></h3><pre class="swift"><code><span class="keyword">let</span> names = [<span class="string">"John"</span>, <span class="string">"Bob"</span>]
+<span class="keyword">for</span> name <span class="keyword">in</span> names {
+    <span class="call">print</span>(<span class="string">"Hello,</span> \(name)<span class="string">!"</span>)
+}
+<span class="comment">// =&gt; Hello, John!
+// =&gt; Hello, Bob!</span>
+
+<span class="keyword">let</span> scores = [
+    <span class="string">"John"</span>: <span class="number">8</span>,
+    <span class="string">"Bob"</span>: <span class="number">7</span>,
+]
+
+<span class="keyword">for</span> (name, score) <span class="keyword">in</span> scores {
+    <span class="call">print</span>(<span class="string">"</span>\(name)<span class="string">'s score:</span> \(score)<span class="string">"</span>)
+}
+<span class="comment">// =&gt; John's score: 8
+// =&gt; Bob's score: 7</span></code></pre><div id="tooltip-4_7" class="tooltip"><textarea id="snippet-code-4_7" class="original-code">let names = ["John", "Bob"]
+for name in names {
+    print("Hello, \(name)!")
+}
+// => Hello, John!
+// => Hello, Bob!
+
+let scores = [
+    "John": 8,
+    "Bob": 7,
+]
+
+for (name, score) in scores {
+    print("\(name)'s score: \(score)")
+}
+// => John's score: 8
+// => Bob's score: 7</textarea><button id="copy-button-4_7" onclick="copySnippet('4_7')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID121" target="_blank">For-In Loops</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/while"></a><h3><a href="#control-flow/while" class="anchor">while</a></h3><pre class="swift"><code><span class="keyword">var</span> i = <span class="number">0</span>
+
+<span class="keyword">while</span> i &lt; <span class="number">3</span> {
+    <span class="call">print</span>(<span class="string">"</span>\(i + <span class="number">1</span>)<span class="string">."</span>)
+    i += <span class="number">1</span>
+}
+
+<span class="comment">// =&gt; 1.
+// =&gt; 2.
+// =&gt; 3.</span></code></pre><div id="tooltip-4_8" class="tooltip"><textarea id="snippet-code-4_8" class="original-code">var i = 0
+
+while i < 3 {
+    print("\(i + 1).")
+    i += 1
+}
+
+// => 1.
+// => 2.
+// => 3.</textarea><button id="copy-button-4_8" onclick="copySnippet('4_8')">Copy</button></div><p class="note">The while block won't be executed if the condition is not true.</p><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID124" target="_blank">While Loops</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/repeat-while"></a><h3><a href="#control-flow/repeat-while" class="anchor">repeat-while</a></h3><pre class="swift"><code><span class="keyword">var</span> i = <span class="number">0</span>
+
+<span class="keyword">repeat</span> {
+    <span class="call">print</span>(<span class="string">"</span>\(i + <span class="number">1</span>)<span class="string">."</span>)
+    i += <span class="number">1</span>
+}
+<span class="keyword">while</span> i &lt; <span class="number">3</span>
+
+<span class="comment">// =&gt; 1.
+// =&gt; 2.
+// =&gt; 3.</span></code></pre><div id="tooltip-4_9" class="tooltip"><textarea id="snippet-code-4_9" class="original-code">var i = 0
+
+repeat {
+    print("\(i + 1).")
+    i += 1
+}
+while i < 3
+
+// => 1.
+// => 2.
+// => 3.</textarea><button id="copy-button-4_9" onclick="copySnippet('4_9')">Copy</button></div><p class="note">The repeat block will be executed at least 1 time, if the while condition is true, the loop keeps going.</p><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID126" target="_blank">Repeat-While Loops</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/break"></a><h3><a href="#control-flow/break" class="anchor">break</a></h3><pre class="swift"><code><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">5</span> {
+    <span class="keyword">if</span> i == <span class="number">4</span> {
+        <span class="keyword">break</span>
+    }
+    <span class="call">print</span>(i)
+}
+
+<span class="comment">// =&gt; 1
+// =&gt; 2
+// =&gt; 3</span></code></pre><div id="tooltip-4_10" class="tooltip"><textarea id="snippet-code-4_10" class="original-code">for i in 1...5 {
+    if i == 4 {
+        break
+    }
+    print(i)
+}
+
+// => 1
+// => 2
+// => 3</textarea><button id="copy-button-4_10" onclick="copySnippet('4_10')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID137" target="_blank">Break</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/continue"></a><h3><a href="#control-flow/continue" class="anchor">continue</a></h3><pre class="swift"><code><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="number">5</span> {
+    <span class="keyword">if</span> i == <span class="number">4</span> {
+        <span class="keyword">continue</span>
+    }
+    <span class="call">print</span>(i)
+}
+
+<span class="comment">// =&gt; 1
+// =&gt; 2
+// =&gt; 3
+// =&gt; 5</span></code></pre><div id="tooltip-4_11" class="tooltip"><textarea id="snippet-code-4_11" class="original-code">for i in 1...5 {
+    if i == 4 {
+        continue
+    }
+    print(i)
+}
+
+// => 1
+// => 2
+// => 3
+// => 5</textarea><button id="copy-button-4_11" onclick="copySnippet('4_11')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID136" target="_blank">Continue</a></p></div></div><div class="card"><div class="flex"><a id="control-flow/fallthrough"></a><h3><a href="#control-flow/fallthrough" class="anchor">fallthrough</a></h3><pre class="swift"><code><span class="keyword">let</span> number = <span class="number">5</span>
+<span class="keyword">var</span> description = <span class="string">"The number is"</span>
+
+<span class="keyword">switch</span> number {
+<span class="keyword">case</span> <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>:
+    description += <span class="string">" a prime, and also"</span>
+    <span class="keyword">fallthrough
+default</span>:
+    description += <span class="string">" an integer."</span>
+}
+<span class="call">print</span>(description)
+
+<span class="comment">// =&gt; The number is a prime,
+//        and also an integer.</span></code></pre><div id="tooltip-4_12" class="tooltip"><textarea id="snippet-code-4_12" class="original-code">let number = 5
+var description = "The number is"
+
+switch number {
+case 2, 3, 5, 7:
+    description += " a prime, and also"
+    fallthrough
+default:
+    description += " an integer."
+}
+print(description)
+
+// => The number is a prime,
+//        and also an integer.</textarea><button id="copy-button-4_12" onclick="copySnippet('4_12')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID140" target="_blank">Fallthrough</a></p></div></div></div></section><section><a id="functions"></a><h2><a href="#functions" class="anchor">Functions</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="functions/declaration"></a><h3><a href="#functions/declaration" class="anchor">declaration</a></h3><pre class="swift"><code><span class="comment">// declaring the function</span>
+<span class="keyword">func</span> greet() {
+    <span class="call">print</span>(<span class="string">"Hello, World!"</span>)
+}
+
+<span class="comment">// calling the function</span>
+<span class="call">greet</span>()
+<span class="comment">// =&gt; Hello, World!</span></code></pre><div id="tooltip-5_1" class="tooltip"><textarea id="snippet-code-5_1" class="original-code">// declaring the function
+func greet() {
+    print("Hello, World!")
+}
+
+// calling the function
+greet()
+// => Hello, World!</textarea><button id="copy-button-5_1" onclick="copySnippet('5_1')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID159" target="_blank">Defining and Calling Functions</a></p></div></div><div class="card"><div class="flex"><a id="functions/parameters"></a><h3><a href="#functions/parameters" class="anchor">parameters</a></h3><pre class="swift"><code><span class="comment">// explicit Void return type</span>
+<span class="keyword">func</span> greet(name: <span class="type">String</span>) -&gt; <span class="type">Void</span> {
+    <span class="call">print</span>(<span class="string">"Hello,</span> \(name)<span class="string">!"</span>)
+}
+
+<span class="call">greet</span>(name: <span class="string">"John"</span>)
+<span class="comment">// =&gt; Hello, John!</span>
+
+<span class="call">greet</span>(name: <span class="string">"Bob"</span>)
+<span class="comment">// =&gt; Hello, Bob!</span></code></pre><div id="tooltip-5_2" class="tooltip"><textarea id="snippet-code-5_2" class="original-code">// explicit Void return type
+func greet(name: String) -> Void {
+    print("Hello, \(name)!")
+}
+
+greet(name: "John")
+// => Hello, John!
+
+greet(name: "Bob")
+// => Hello, Bob!</textarea><button id="copy-button-5_2" onclick="copySnippet('5_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID160" target="_blank">Function Parameters and Retrun Values</a></p></div></div><div class="card"><div class="flex"><a id="functions/return-values"></a><h3><a href="#functions/return-values" class="anchor">return values</a></h3><pre class="swift"><code><span class="comment">// returns with an Int type</span>
+<span class="keyword">func</span> add(<span class="keyword">_</span> a: <span class="type">Int</span>, <span class="keyword">_</span> b: <span class="type">Int</span>) -&gt; <span class="type">Int</span> {
+    <span class="keyword">return</span> a + b
+}
+
+<span class="comment">// implicit return</span>
+<span class="keyword">func</span> greet(name: <span class="type">String</span>) -&gt; <span class="type">String</span> {
+    <span class="string">"Hello,</span> \(name)<span class="string">!"</span>
+}
+
+<span class="call">print</span>(<span class="call">greet</span>(name: <span class="string">"John"</span>))
+<span class="comment">// =&gt; Hello, John!</span>
+
+<span class="call">print</span>(<span class="call">greet</span>(name: <span class="string">"Bob"</span>))
+<span class="comment">// =&gt; Hello, Bob!</span></code></pre><div id="tooltip-5_3" class="tooltip"><textarea id="snippet-code-5_3" class="original-code">// returns with an Int type
+func add(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+// implicit return
+func greet(name: String) -> String {
+    "Hello, \(name)!"
+}
+
+print(greet(name: "John"))
+// => Hello, John!
+
+print(greet(name: "Bob"))
+// => Hello, Bob!</textarea><button id="copy-button-5_3" onclick="copySnippet('5_3')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID607" target="_blank">Functions With an Implicit Return</a></p></div></div><div class="card"><div class="flex"><a id="functions/argument-labels"></a><h3><a href="#functions/argument-labels" class="anchor">argument labels</a></h3><pre class="swift"><code><span class="comment">// omit argument labels</span>
+<span class="keyword">func</span> add(<span class="keyword">_</span> a: <span class="type">Int</span>, <span class="keyword">_</span> b: <span class="type">Int</span>) -&gt; <span class="type">Int</span> {
+    <span class="keyword">return</span> a + b
+}
+
+<span class="comment">// custom argument labels</span>
+<span class="keyword">func</span> printSum(of a: <span class="type">Int</span>, and b: <span class="type">Int</span>) {
+    <span class="keyword">let</span> c = <span class="call">add</span>(a, b)
+    <span class="call">print</span>(<span class="string">"</span>\(a) <span class="string">+</span> \(b) <span class="string">=</span> \(c)<span class="string">"</span>)
+}
+
+<span class="call">printSum</span>(of: <span class="number">4</span>, and: <span class="number">2</span>)
+<span class="comment">// =&gt; 4 + 2 = 6</span></code></pre><div id="tooltip-5_4" class="tooltip"><textarea id="snippet-code-5_4" class="original-code">// omit argument labels
+func add(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+// custom argument labels
+func printSum(of a: Int, and b: Int) {
+    let c = add(a, b)
+    print("\(a) + \(b) = \(c)")
+}
+
+printSum(of: 4, and: 2)
+// => 4 + 2 = 6</textarea><button id="copy-button-5_4" onclick="copySnippet('5_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID166" target="_blank">Argument Labels and Parameter Names</a></p></div></div><div class="card"><div class="flex"><a id="functions/variadic-functions"></a><h3><a href="#functions/variadic-functions" class="anchor">variadic functions</a></h3><pre class="swift"><code><span class="comment">// you can pass multiple Int values</span>
+<span class="keyword">func</span> add(<span class="keyword">_</span> numbers: <span class="type">Int</span>...) -&gt; <span class="type">Int</span> {
+    <span class="keyword">var</span> result = <span class="number">0</span>
+    <span class="comment">// numbers is an Array&lt;Int&gt; type</span>
+    <span class="keyword">for</span> number <span class="keyword">in</span> numbers {
+        result += number
+    }
+    <span class="keyword">return</span> result
+}
+
+<span class="call">print</span>(<span class="call">add</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))
+<span class="comment">// =&gt; 10</span></code></pre><div id="tooltip-5_5" class="tooltip"><textarea id="snippet-code-5_5" class="original-code">// you can pass multiple Int values
+func add(_ numbers: Int...) -> Int {
+    var result = 0
+    // numbers is an Array<Int> type
+    for number in numbers {
+        result += number
+    }
+    return result
+}
+
+print(add(1,2,3,4))
+// => 10</textarea><button id="copy-button-5_5" onclick="copySnippet('5_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID171" target="_blank">Variadic Parameters</a></p></div></div><div class="card"><div class="flex"><a id="functions/inout-parameters"></a><h3><a href="#functions/inout-parameters" class="anchor">inout parameters</a></h3><pre class="swift"><code><span class="keyword">func</span> increment(<span class="keyword">_</span> value: <span class="keyword">inout</span> <span class="type">Int</span>) {
+    value += <span class="number">1</span>
+}
+
+<span class="keyword">var</span> counter = <span class="number">0</span>
+
+<span class="call">increment</span>(&amp;counter)
+<span class="call">print</span>(counter) <span class="comment">// =&gt; 1</span>
+
+<span class="call">increment</span>(&amp;counter)
+<span class="call">print</span>(counter) <span class="comment">// =&gt; 2</span></code></pre><div id="tooltip-5_6" class="tooltip"><textarea id="snippet-code-5_6" class="original-code">func increment(_ value: inout Int) {
+    value += 1
+}
+
+var counter = 0
+
+increment(&counter)
+print(counter) // => 1
+
+increment(&counter)
+print(counter) // => 2</textarea><button id="copy-button-5_6" onclick="copySnippet('5_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID173" target="_blank">In-Out Parameters</a></p></div></div><div class="card"><div class="flex"><a id="functions/nested-functions"></a><h3><a href="#functions/nested-functions" class="anchor">nested functions</a></h3><pre class="swift"><code><span class="keyword">func</span> printSum(of a: <span class="type">Int</span>, and b: <span class="type">Int</span>) {
+    <span class="comment">// nested function</span>
+    <span class="keyword">func</span> add(<span class="keyword">_</span> a: <span class="type">Int</span>, <span class="keyword">_</span> b: <span class="type">Int</span>) -&gt; <span class="type">Int</span> {
+        a + b
+    }
+
+    <span class="keyword">let</span> c = <span class="call">add</span>(a, b)
+    <span class="call">print</span>(<span class="string">"The sum is</span> \(c)<span class="string">"</span>)
+}
+
+<span class="call">printSum</span>(of: <span class="number">42</span>, and: <span class="number">6</span>) <span class="comment">// =&gt; 48</span></code></pre><div id="tooltip-5_7" class="tooltip"><textarea id="snippet-code-5_7" class="original-code">func printSum(of a: Int, and b: Int) {
+    // nested function
+    func add(_ a: Int, _ b: Int) -> Int {
+        a + b
+    }
+
+    let c = add(a, b)
+    print("The sum is \(c)")
+}
+
+printSum(of: 42, and: 6) // => 48</textarea><button id="copy-button-5_7" onclick="copySnippet('5_7')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID178" target="_blank">Nested Functions</a></p></div></div><div class="card"><div class="flex"><a id="functions/overloading-parameters"></a><h3><a href="#functions/overloading-parameters" class="anchor">overloading parameters</a></h3><pre class="swift"><code><span class="keyword">func</span> add(<span class="keyword">_</span> a: <span class="type">Int</span>, <span class="keyword">_</span> b: <span class="type">Int</span>) -&gt; <span class="type">Int</span> {
+    <span class="call">print</span>(<span class="string">"Add two Int values"</span>)
+    <span class="keyword">return</span> a + b
+}
+
+<span class="keyword">func</span> add(<span class="keyword">_</span> a: <span class="type">Float</span>, <span class="keyword">_</span> b: <span class="type">Float</span>) -&gt; <span class="type">Float</span> {
+    <span class="call">print</span>(<span class="string">"Add two Float values"</span>)
+    <span class="keyword">return</span> a + b
+}
+
+<span class="call">print</span>(<span class="call">add</span>(<span class="number">42</span>, <span class="number">69</span>))
+<span class="comment">// =&gt; Add two Int values
+// =&gt; 111</span>
+
+<span class="call">print</span>(<span class="call">add</span>(<span class="number">4.20</span>, <span class="number">6.9</span>))
+<span class="comment">// =&gt; Add two Float values
+// =&gt; 11.1</span></code></pre><div id="tooltip-5_8" class="tooltip"><textarea id="snippet-code-5_8" class="original-code">func add(_ a: Int, _ b: Int) -> Int {
+    print("Add two Int values")
+    return a + b
+}
+
+func add(_ a: Float, _ b: Float) -> Float {
+    print("Add two Float values")
+    return a + b
+}
+
+print(add(42, 69))
+// => Add two Int values
+// => 111
+
+print(add(4.20, 6.9))
+// => Add two Float values
+// => 11.1</textarea><button id="copy-button-5_8" onclick="copySnippet('5_8')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html" target="_blank">Functions</a>, <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html" target="_blank">Generics</a></p></div></div><div class="card"><div class="flex"><a id="functions/closures"></a><h3><a href="#functions/closures" class="anchor">closures</a></h3><pre class="swift"><code><span class="comment">// closure block</span>
+<span class="keyword">let</span> log: (<span class="type">Int</span>) -&gt; <span class="type">Void</span> = { value <span class="keyword">in</span>
+    <span class="call">print</span>(<span class="string">"Value:</span> \(value)<span class="string">"</span>)
+}
+
+<span class="call">log</span>(<span class="number">420</span>) <span class="comment">// =&gt; Value: 420</span>
+
+<span class="call">log</span>(<span class="number">69</span>) <span class="comment">// =&gt; Value: 469</span>
+</code></pre><div id="tooltip-5_9" class="tooltip"><textarea id="snippet-code-5_9" class="original-code">// closure block
+let log: (Int) -> Void = { value in
+    print("Value: \(value)")
+}
+
+log(420) // => Value: 420
+
+log(69) // => Value: 469
+</textarea><button id="copy-button-5_9" onclick="copySnippet('5_9')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Closures.html" target="_blank">Closures</a></p></div></div></div></section><section><a id="error-handling"></a><h2><a href="#error-handling" class="anchor">Error handling</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="error-handling/stop-execution"></a><h3><a href="#error-handling/stop-execution" class="anchor">stop execution</a></h3><pre class="swift"><code><span class="comment">// check a condition, fail if false</span>
+precondition(<span class="keyword">false</span>, <span class="string">"ouch"</span>)
+
+<span class="comment">// indicate a precondition failure</span>
+<span class="call">preconditionFailure</span>(<span class="string">"ouch"</span>)
+
+<span class="comment">// assert a condition, fail if false</span>
+assert(<span class="keyword">false</span>, <span class="string">"ouch"</span>)
+
+<span class="comment">// indicate an assertion failure</span>
+<span class="call">assertionFailure</span>(<span class="string">"ouch"</span>)
+
+<span class="comment">// fatal error</span>
+<span class="call">fatalError</span>(<span class="string">"ouch"</span>)
+
+<span class="comment">// exit with a failure</span>
+<span class="call">exit</span>(<span class="type">EXIT_FAILURE</span>)</code></pre><div id="tooltip-6_1" class="tooltip"><textarea id="snippet-code-6_1" class="original-code">// check a condition, fail if false
+precondition(false, "ouch")
+
+// indicate a precondition failure
+preconditionFailure("ouch")
+
+// assert a condition, fail if false
+assert(false, "ouch")
+
+// indicate an assertion failure
+assertionFailure("ouch")
+
+// fatal error
+fatalError("ouch")
+
+// exit with a failure
+exit(EXIT_FAILURE)</textarea><button id="copy-button-6_1" onclick="copySnippet('6_1')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/precondition(_:_:file:line:)" target="_blank">precondition</a>, <a href="https://developer.apple.com/documentation/swift/assert(_:_:file:line:)" target="_blank">assert</a>, <a href="https://developer.apple.com/documentation/swift/fatalerror(_:file:line:)" target="_blank">fatalError</a>, <a href="https://developer.apple.com/documentation/foundation/thread/1409404-exit" target="_blank">exit</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/throw-do-try-catch"></a><h3><a href="#error-handling/throw-do-try-catch" class="anchor">throw, do-try-catch</a></h3><pre class="swift"><code><span class="keyword">enum</span> UserError: <span class="type">Error</span> {
+    <span class="keyword">case</span> invalidPassword
+}
+
+<span class="keyword">func</span> login() <span class="keyword">throws</span> {
+    <span class="keyword">throw</span> <span class="type">UserError</span>.<span class="property">invalidPassword</span>
+}
+
+<span class="keyword">do</span> {
+    <span class="keyword">try</span> <span class="call">login</span>()
+}
+<span class="keyword">catch</span> {
+    <span class="comment">// this block will be executed</span>
+    <span class="call">print</span>(error.<span class="property">localizedDescription</span>)
+}
+
+<span class="comment">// =&gt; The operation couldn’t be completed.
+//        (Cheatsheet.UserError error 0.)</span></code></pre><div id="tooltip-6_2" class="tooltip"><textarea id="snippet-code-6_2" class="original-code">enum UserError: Error {
+    case invalidPassword
+}
+
+func login() throws {
+    throw UserError.invalidPassword
+}
+
+do {
+    try login()
+}
+catch {
+    // this block will be executed
+    print(error.localizedDescription)
+}
+
+// => The operation couldn’t be completed.
+//        (Cheatsheet.UserError error 0.)</textarea><button id="copy-button-6_2" onclick="copySnippet('6_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html#ID541" target="_blank">Handling Errors Using Do-Catch</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/try-try-try"></a><h3><a href="#error-handling/try-try-try" class="anchor">try, try?, try!</a></h3><pre class="swift"><code><span class="keyword">enum</span> UserError: <span class="type">Error</span> {
+    <span class="keyword">case</span> invalidPassword
+}
+
+<span class="keyword">func</span> login() <span class="keyword">throws</span> {
+    <span class="keyword">throw</span> <span class="type">UserError</span>.<span class="property">invalidPassword</span>
+}
+
+<span class="keyword">do</span> {
+    <span class="keyword">try</span> <span class="call">login</span>()
+}
+<span class="keyword">catch</span> {} <span class="comment">// catches the error</span>
+
+<span class="keyword">try</span>? <span class="call">login</span>() <span class="comment">// hides the error</span>
+
+<span class="keyword">try</span>! <span class="call">login</span>() <span class="comment">// FATAL ERROR
+
+// Thread 1: Fatal error: 'try!'
+//    expression unexpectedly
+//    raised an error:
+// Cheatsheet.UserError.invalidPassword</span></code></pre><div id="tooltip-6_3" class="tooltip"><textarea id="snippet-code-6_3" class="original-code">enum UserError: Error {
+    case invalidPassword
+}
+
+func login() throws {
+    throw UserError.invalidPassword
+}
+
+do {
+    try login()
+}
+catch {} // catches the error
+
+try? login() // hides the error
+
+try! login() // FATAL ERROR
+
+// Thread 1: Fatal error: 'try!'
+//    expression unexpectedly
+//    raised an error:
+// Cheatsheet.UserError.invalidPassword</textarea><button id="copy-button-6_3" onclick="copySnippet('6_3')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/optional" target="_blank">Optional</a>, <a href="https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html#ID542" target="_blank">Converting Errors to Optional Values</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/catch-specific-errors"></a><h3><a href="#error-handling/catch-specific-errors" class="anchor">catch specific errors</a></h3><pre class="swift"><code><span class="keyword">enum</span> UserError: <span class="type">Error</span> {
+    <span class="keyword">case</span> invalidPassword
+}
+
+<span class="keyword">func</span> login() <span class="keyword">throws</span> {
+    <span class="keyword">throw</span> <span class="type">UserError</span>.<span class="property">invalidPassword</span>
+}
+
+<span class="keyword">do</span> {
+    <span class="keyword">try</span> <span class="call">login</span>()
+}
+<span class="keyword">catch</span> <span class="type">UserError</span>.<span class="call">invalidPassword</span> {
+    <span class="comment">// this block will be executed</span>
+    <span class="call">print</span>(<span class="string">"Invalid password"</span>)
+}
+<span class="keyword">catch</span> {
+    <span class="call">print</span>(error.<span class="property">localizedDescription</span>)
+}
+
+<span class="comment">// =&gt; Invalid password</span></code></pre><div id="tooltip-6_4" class="tooltip"><textarea id="snippet-code-6_4" class="original-code">enum UserError: Error {
+    case invalidPassword
+}
+
+func login() throws {
+    throw UserError.invalidPassword
+}
+
+do {
+    try login()
+}
+catch UserError.invalidPassword {
+    // this block will be executed
+    print("Invalid password")
+}
+catch {
+    print(error.localizedDescription)
+}
+
+// => Invalid password</textarea><button id="copy-button-6_4" onclick="copySnippet('6_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html#ID541" target="_blank">Handling Errors Using Do-Catch</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/catch-and-switch-specific-errors"></a><h3><a href="#error-handling/catch-and-switch-specific-errors" class="anchor">catch and switch specific errors</a></h3><pre class="swift"><code><span class="keyword">enum</span> UserError: <span class="type">Error</span> {
+    <span class="keyword">case</span> invalidPassword
+}
+
+<span class="keyword">func</span> login() <span class="keyword">throws</span> {
+    <span class="keyword">throw</span> <span class="type">UserError</span>.<span class="property">invalidPassword</span>
+}
+
+<span class="keyword">do</span> {
+    <span class="keyword">try</span> <span class="call">login</span>()
+}
+<span class="keyword">catch let</span> error <span class="keyword">as</span> <span class="type">UserError</span> {
+    <span class="keyword">switch</span> error {
+    <span class="keyword">case</span> .<span class="dotAccess">invalidPassword</span>:
+        <span class="call">print</span>(<span class="string">"Invalid password"</span>)
+    }
+}
+<span class="keyword">catch</span> {
+    <span class="call">print</span>(error.<span class="property">localizedDescription</span>)
+}
+
+<span class="comment">// =&gt; Invalid password</span>
+</code></pre><div id="tooltip-6_5" class="tooltip"><textarea id="snippet-code-6_5" class="original-code">enum UserError: Error {
+    case invalidPassword
+}
+
+func login() throws {
+    throw UserError.invalidPassword
+}
+
+do {
+    try login()
+}
+catch let error as UserError {
+    switch error {
+    case .invalidPassword:
+        print("Invalid password")
+    }
+}
+catch {
+    print(error.localizedDescription)
+}
+
+// => Invalid password
+</textarea><button id="copy-button-6_5" onclick="copySnippet('6_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html" target="_blank">Error Handling</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/localized-error-messages"></a><h3><a href="#error-handling/localized-error-messages" class="anchor">localized error messages</a></h3><pre class="swift"><code><span class="keyword">enum</span> UserError: <span class="type">LocalizedError</span> {
+    <span class="keyword">case</span> invalidPassword
+    
+    <span class="keyword">var</span> errorDescription: <span class="type">String</span>? {
+        <span class="string">"Invalid password"</span>
+    }
+}
+
+<span class="keyword">func</span> login() <span class="keyword">throws</span> {
+    <span class="keyword">throw</span> <span class="type">UserError</span>.<span class="property">invalidPassword</span>
+}
+
+<span class="keyword">do</span> {
+    <span class="keyword">try</span> <span class="call">login</span>()
+}
+<span class="keyword">catch</span> {
+    <span class="call">print</span>(error.<span class="property">localizedDescription</span>)
+}
+
+<span class="comment">// =&gt; Invalid password</span></code></pre><div id="tooltip-6_6" class="tooltip"><textarea id="snippet-code-6_6" class="original-code">enum UserError: LocalizedError {
+    case invalidPassword
+    
+    var errorDescription: String? {
+        "Invalid password"
+    }
+}
+
+func login() throws {
+    throw UserError.invalidPassword
+}
+
+do {
+    try login()
+}
+catch {
+    print(error.localizedDescription)
+}
+
+// => Invalid password</textarea><button id="copy-button-6_6" onclick="copySnippet('6_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html" target="_blank">Error Handling</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/optionals-as-error-indicators"></a><h3><a href="#error-handling/optionals-as-error-indicators" class="anchor">optionals as error indicators</a></h3><pre class="swift"><code><span class="comment">// Int type with 0 value</span>
+<span class="keyword">let</span> zeroValue = <span class="type">Int</span>(<span class="string">"0"</span>)!
+
+<span class="comment">// Int? type with nil value</span>
+<span class="keyword">let</span> nilValue = <span class="type">Int</span>(<span class="string">"not a number"</span>)
+
+<span class="keyword">guard let</span> number = <span class="type">Int</span>(<span class="string">"6"</span>) <span class="keyword">else</span> {
+    <span class="call">fatalError</span>(<span class="string">"Invalid number."</span>)
+}
+<span class="call">print</span>(number) <span class="comment">// =&gt; 6</span>
+</code></pre><div id="tooltip-6_7" class="tooltip"><textarea id="snippet-code-6_7" class="original-code">// Int type with 0 value
+let zeroValue = Int("0")!
+
+// Int? type with nil value
+let nilValue = Int("not a number")
+
+guard let number = Int("6") else {
+    fatalError("Invalid number.")
+}
+print(number) // => 6
+</textarea><button id="copy-button-6_7" onclick="copySnippet('6_7')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/optional" target="_blank">Optional</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/the-result-type"></a><h3><a href="#error-handling/the-result-type" class="anchor">the result type</a></h3><pre class="swift"><code><span class="keyword">enum</span> DivisionError: <span class="type">Error</span> {
+    <span class="keyword">case</span> zeroDivisor
+}
+
+<span class="keyword">func</span> divide(
+    <span class="keyword">_</span> x: <span class="type">Int</span>,
+    <span class="keyword">_</span> y: <span class="type">Int</span>
+) -&gt; <span class="type">Result</span>&lt;<span class="type">Int</span>, <span class="type">DivisionError</span>&gt; {
+    <span class="keyword">guard</span> y != <span class="number">0</span> <span class="keyword">else</span> {
+        <span class="keyword">return</span> .<span class="call">failure</span>(.<span class="dotAccess">zeroDivisor</span>)
+    }
+    <span class="keyword">return</span> .<span class="call">success</span>(x / y)
+}
+
+<span class="keyword">let</span> result = <span class="call">divide</span>(<span class="number">10</span>, <span class="number">0</span>)
+<span class="keyword">switch</span> result {
+<span class="keyword">case</span> .<span class="dotAccess">success</span>(<span class="keyword">let</span> number):
+    <span class="call">print</span>(number)
+<span class="keyword">case</span> .<span class="dotAccess">failure</span>(<span class="keyword">let</span> error):
+    <span class="call">print</span>(error.<span class="property">localizedDescription</span>)
+}
+
+<span class="comment">// =&gt; The operation couldn’t be completed.
+//    (Cheatsheet.DivisionError error 0.)</span>
+</code></pre><div id="tooltip-6_8" class="tooltip"><textarea id="snippet-code-6_8" class="original-code">enum DivisionError: Error {
+    case zeroDivisor
+}
+
+func divide(
+    _ x: Int,
+    _ y: Int
+) -> Result<Int, DivisionError> {
+    guard y != 0 else {
+        return .failure(.zeroDivisor)
+    }
+    return .success(x / y)
+}
+
+let result = divide(10, 0)
+switch result {
+case .success(let number):
+    print(number)
+case .failure(let error):
+    print(error.localizedDescription)
+}
+
+// => The operation couldn’t be completed.
+//    (Cheatsheet.DivisionError error 0.)
+</textarea><button id="copy-button-6_8" onclick="copySnippet('6_8')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/result" target="_blank">Result</a></p></div></div><div class="card"><div class="flex"><a id="error-handling/try-get-result"></a><h3><a href="#error-handling/try-get-result" class="anchor">try get result</a></h3><pre class="swift"><code><span class="keyword">enum</span> MyError: <span class="type">Error</span> {
+    <span class="keyword">case</span> ouch
+}
+
+<span class="keyword">let</span> result: <span class="type">Result</span>&lt;<span class="type">String</span>, <span class="type">Error</span>&gt;
+
+<span class="comment">// result = .success("ok")</span>
+result = .<span class="call">failure</span>(<span class="type">MyError</span>.<span class="property">ouch</span>)
+
+<span class="keyword">do</span> {
+    <span class="keyword">let</span> value = <span class="keyword">try</span> result.<span class="call">get</span>()
+    
+    <span class="call">print</span>(value)
+}
+<span class="keyword">catch</span> {
+    <span class="call">print</span>(error.<span class="property">localizedDescription</span>)
+}
+
+<span class="comment">// =&gt; The operation couldn’t be completed.
+//     (Cheatsheet.MyError error 0.)</span></code></pre><div id="tooltip-6_9" class="tooltip"><textarea id="snippet-code-6_9" class="original-code">enum MyError: Error {
+    case ouch
+}
+
+let result: Result<String, Error>
+
+// result = .success("ok")
+result = .failure(MyError.ouch)
+
+do {
+    let value = try result.get()
+    
+    print(value)
+}
+catch {
+    print(error.localizedDescription)
+}
+
+// => The operation couldn’t be completed.
+//     (Cheatsheet.MyError error 0.)</textarea><button id="copy-button-6_9" onclick="copySnippet('6_9')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/result" target="_blank">Result</a></p></div></div></div></section><section><a id="enums"></a><h2><a href="#enums" class="anchor">Enums</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="enums/basics"></a><h3><a href="#enums/basics" class="anchor">basics</a></h3><pre class="swift"><code><span class="keyword">enum</span> Weekdays {
+    <span class="keyword">case</span> monday
+    <span class="keyword">case</span> tuesday
+    <span class="keyword">case</span> wednesday
+    <span class="keyword">case</span> thursday
+    <span class="keyword">case</span> friday
+    <span class="keyword">case</span> saturday
+    <span class="keyword">case</span> sunday
+}
+
+<span class="keyword">let</span> weekday: <span class="type">Weekdays</span> = .<span class="dotAccess">monday</span>
+<span class="call">print</span>(weekday) <span class="comment">// monday</span></code></pre><div id="tooltip-7_1" class="tooltip"><textarea id="snippet-code-7_1" class="original-code">enum Weekdays {
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    case sunday
+}
+
+let weekday: Weekdays = .monday
+print(weekday) // monday</textarea><button id="copy-button-7_1" onclick="copySnippet('7_1')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html" target="_blank">Enumerations</a></p></div></div><div class="card"><div class="flex"><a id="enums/raw-values"></a><h3><a href="#enums/raw-values" class="anchor">raw values</a></h3><pre class="swift"><code><span class="keyword">enum</span> Characters: <span class="type">String</span> {
+    <span class="keyword">case</span> newline = <span class="string">"\n"</span>
+    <span class="keyword">case</span> tab = <span class="string">"\t"</span>
+}
+
+<span class="keyword">let</span> character: <span class="type">Characters</span> = .<span class="dotAccess">newline</span>
+<span class="keyword">switch</span> character {
+<span class="keyword">case</span> .<span class="dotAccess">newline</span>:
+    <span class="call">print</span>(<span class="string">"New line"</span>)
+<span class="keyword">case</span> .<span class="dotAccess">tab</span>:
+    <span class="call">print</span>(<span class="string">"Tab"</span>)
+}
+<span class="comment">// =&gt; New line</span></code></pre><div id="tooltip-7_2" class="tooltip"><textarea id="snippet-code-7_2" class="original-code">enum Characters: String {
+    case newline = "\n"
+    case tab = "\t"
+}
+
+let character: Characters = .newline
+switch character {
+case .newline:
+    print("New line")
+case .tab:
+    print("Tab")
+}
+// => New line</textarea><button id="copy-button-7_2" onclick="copySnippet('7_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html#ID149" target="_blank">Raw Values</a></p></div></div><div class="card"><div class="flex"><a id="enums/all-cases"></a><h3><a href="#enums/all-cases" class="anchor">all cases</a></h3><pre class="swift"><code><span class="keyword">enum</span> Directions: <span class="type">CaseIterable</span> {
+    <span class="keyword">case</span> north
+    <span class="keyword">case</span> east
+    <span class="keyword">case</span> south
+    <span class="keyword">case</span> west
+}
+
+<span class="call">print</span>(<span class="type">Directions</span>.<span class="property">allCases</span>)
+<span class="comment">// =&gt; [.north, .east, .south, .west]</span></code></pre><div id="tooltip-7_3" class="tooltip"><textarea id="snippet-code-7_3" class="original-code">enum Directions: CaseIterable {
+    case north
+    case east
+    case south
+    case west
+}
+
+print(Directions.allCases)
+// => [.north, .east, .south, .west]</textarea><button id="copy-button-7_3" onclick="copySnippet('7_3')">Copy</button></div><p class="references">References: <a href="https://developer.apple.com/documentation/swift/caseiterable" target="_blank">CaseIterable</a></p></div></div><div class="card"><div class="flex"><a id="enums/associated-values"></a><h3><a href="#enums/associated-values" class="anchor">associated values</a></h3><pre class="swift"><code><span class="keyword">enum</span> HttpStatus {
+    <span class="keyword">case</span> error
+    <span class="keyword">case</span> code(<span class="type">Int</span>)
+}
+
+<span class="keyword">let</span> status = <span class="type">HttpStatus</span>.<span class="call">code</span>(<span class="number">404</span>)
+
+<span class="keyword">switch</span> status {
+<span class="keyword">case</span> .<span class="dotAccess">error</span>:
+    <span class="call">print</span>(<span class="string">"HTTP error"</span>)
+<span class="keyword">case</span> .<span class="dotAccess">code</span>(<span class="keyword">let</span> value):
+    <span class="call">print</span>(<span class="string">"HTTP code:</span> \(value)<span class="string">"</span>)
+}
+<span class="comment">// =&gt; HTTP code: 404</span></code></pre><div id="tooltip-7_4" class="tooltip"><textarea id="snippet-code-7_4" class="original-code">enum HttpStatus {
+    case error
+    case code(Int)
+}
+
+let status = HttpStatus.code(404)
+
+switch status {
+case .error:
+    print("HTTP error")
+case .code(let value):
+    print("HTTP code: \(value)")
+}
+// => HTTP code: 404</textarea><button id="copy-button-7_4" onclick="copySnippet('7_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html#ID148" target="_blank">Associated Values</a></p></div></div></div></section><section><a id="structs"></a><h2><a href="#structs" class="anchor">Structs</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="structs/basics"></a><h3><a href="#structs/basics" class="anchor">basics</a></h3><pre class="swift"><code><span class="keyword">struct</span> Person {
+    <span class="keyword">let</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+}
+
+<span class="comment">// value type</span>
+<span class="keyword">var</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+<span class="keyword">let</span> bob = <span class="type">Person</span>(name: <span class="string">"Bob"</span>, age: <span class="number">69</span>)
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>) <span class="comment">// =&gt; John 42</span>
+<span class="call">print</span>(bob.<span class="property">name</span>, bob.<span class="property">age</span>) <span class="comment">// =&gt; Bob 69</span>
+
+john.<span class="property">age</span> = <span class="number">69</span>
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>) <span class="comment">// =&gt; John 69</span>
+
+bob.<span class="property">age</span> = <span class="number">70</span> <span class="comment">// ERROR
+// Cannot assign to property:
+//    'bob' is a 'let' constant</span>
+</code></pre><div id="tooltip-8_1" class="tooltip"><textarea id="snippet-code-8_1" class="original-code">struct Person {
+    let name: String
+    var age: Int
+}
+
+// value type
+var john = Person(name: "John", age: 42)
+let bob = Person(name: "Bob", age: 69)
+
+print(john.name, john.age) // => John 42
+print(bob.name, bob.age) // => Bob 69
+
+john.age = 69
+
+print(john.name, john.age) // => John 69
+
+bob.age = 70 // ERROR
+// Cannot assign to property:
+//    'bob' is a 'let' constant
+</textarea><button id="copy-button-8_1" onclick="copySnippet('8_1')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html" target="_blank">Structures and Classes</a></p></div></div><div class="card"><div class="flex"><a id="structs/init"></a><h3><a href="#structs/init" class="anchor">init</a></h3><pre class="swift"><code><span class="keyword">struct</span> Person {
+    <span class="keyword">let</span> name: <span class="type">String</span>
+    <span class="keyword">let</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(<span class="keyword">_</span> name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">Person</span>(<span class="string">"John"</span>, age: <span class="number">42</span>)
+<span class="keyword">let</span> bob = <span class="type">Person</span>(<span class="string">"Bob"</span>, age: <span class="number">69</span>)
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>) <span class="comment">// =&gt; John 42</span>
+<span class="call">print</span>(bob.<span class="property">name</span>, bob.<span class="property">age</span>) <span class="comment">// =&gt; Bob 69</span></code></pre><div id="tooltip-8_2" class="tooltip"><textarea id="snippet-code-8_2" class="original-code">struct Person {
+    let name: String
+    let age: Int
+    
+    init(_ name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+let john = Person("John", age: 42)
+let bob = Person("Bob", age: 69)
+
+print(john.name, john.age) // => John 42
+print(bob.name, bob.age) // => Bob 69</textarea><button id="copy-button-8_2" onclick="copySnippet('8_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Initialization.html" target="_blank">Initialization</a></p></div></div><div class="card"><div class="flex"><a id="structs/functions"></a><h3><a href="#structs/functions" class="anchor">functions</a></h3><pre class="swift"><code><span class="keyword">struct</span> Person {
+    <span class="keyword">let</span> name: <span class="type">String</span>
+    <span class="keyword">let</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">func</span> printInfo() {
+        <span class="call">print</span>(<span class="string">"Name:</span> \(name)<span class="string">, age:</span> \(age)<span class="string">"</span>)
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+<span class="keyword">let</span> bob = <span class="type">Person</span>(name: <span class="string">"Bob"</span>, age: <span class="number">69</span>)
+
+john.<span class="call">printInfo</span>() <span class="comment">// =&gt; Name: John, age: 42</span>
+bob.<span class="call">printInfo</span>() <span class="comment">// =&gt; Name: Bob, age: 69</span></code></pre><div id="tooltip-8_3" class="tooltip"><textarea id="snippet-code-8_3" class="original-code">struct Person {
+    let name: String
+    let age: Int
+    
+    func printInfo() {
+        print("Name: \(name), age: \(age)")
+    }
+}
+
+let john = Person(name: "John", age: 42)
+let bob = Person(name: "Bob", age: 69)
+
+john.printInfo() // => Name: John, age: 42
+bob.printInfo() // => Name: Bob, age: 69</textarea><button id="copy-button-8_3" onclick="copySnippet('8_3')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Methods.html" target="_blank">Methods</a></p></div></div><div class="card"><div class="flex"><a id="structs/static-properties"></a><h3><a href="#structs/static-properties" class="anchor">static properties</a></h3><pre class="swift"><code><span class="keyword">struct</span> Person {
+    
+    <span class="keyword">static var</span> kind = <span class="string">"human"</span>
+    
+    <span class="keyword">let</span> name: <span class="type">String</span>
+    <span class="keyword">let</span> age: <span class="type">Int</span>
+}
+
+<span class="call">print</span>(<span class="type">Person</span>.<span class="property">kind</span>) <span class="comment">// =&gt; human</span>
+
+<span class="type">Person</span>.<span class="property">kind</span> = <span class="string">"alien"</span>
+
+<span class="call">print</span>(<span class="type">Person</span>.<span class="property">kind</span>) <span class="comment">// =&gt; alien</span></code></pre><div id="tooltip-8_4" class="tooltip"><textarea id="snippet-code-8_4" class="original-code">struct Person {
+    
+    static var kind = "human"
+    
+    let name: String
+    let age: Int
+}
+
+print(Person.kind) // => human
+
+Person.kind = "alien"
+
+print(Person.kind) // => alien</textarea><button id="copy-button-8_4" onclick="copySnippet('8_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html" target="_blank">Properties</a></p></div></div><div class="card"><div class="flex"><a id="structs/static-functions"></a><h3><a href="#structs/static-functions" class="anchor">static functions</a></h3><pre class="swift"><code><span class="keyword">struct</span> Person {
+    <span class="keyword">let</span> name: <span class="type">String</span>
+    <span class="keyword">let</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">static func</span> john() -&gt; <span class="type">Person</span> {
+        .<span class="keyword">init</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">Person</span>.<span class="call">john</span>()
+
+<span class="call">print</span>(john.<span class="property">name</span>)
+<span class="call">print</span>(john.<span class="property">age</span>)</code></pre><div id="tooltip-8_5" class="tooltip"><textarea id="snippet-code-8_5" class="original-code">struct Person {
+    let name: String
+    let age: Int
+    
+    static func john() -> Person {
+        .init(name: "John", age: 42)
+    }
+}
+
+let john = Person.john()
+
+print(john.name)
+print(john.age)</textarea><button id="copy-button-8_5" onclick="copySnippet('8_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Methods.html" target="_blank">Methods</a></p></div></div><div class="card"><div class="flex"><a id="structs/debug-description"></a><h3><a href="#structs/debug-description" class="anchor">debug description</a></h3><pre class="swift"><code><span class="keyword">struct</span> Person: <span class="type">CustomDebugStringConvertible</span> {
+
+    <span class="keyword">let</span> name: <span class="type">String</span>
+    <span class="keyword">let</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">var</span> debugDescription: <span class="type">String</span> {
+        <span class="string">"Person&lt;name:</span> \(name)<span class="string">, age:</span> \(age)<span class="string">&gt;"</span>
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+<span class="call">print</span>(john) <span class="comment">// =&gt; Person&lt;name: John, age: 42&gt;</span></code></pre><div id="tooltip-8_6" class="tooltip"><textarea id="snippet-code-8_6" class="original-code">struct Person: CustomDebugStringConvertible {
+
+    let name: String
+    let age: Int
+    
+    var debugDescription: String {
+        "Person<name: \(name), age: \(age)>"
+    }
+}
+
+let john = Person(name: "John", age: 42)
+print(john) // => Person<name: John, age: 42></textarea><button id="copy-button-8_6" onclick="copySnippet('8_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Extensions.html" target="_blank">Extensions</a></p></div></div></div></section><section><a id="classes"></a><h2><a href="#classes" class="anchor">Classes</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="classes/basics"></a><h3><a href="#classes/basics" class="anchor">basics</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+}
+
+<span class="comment">// reference type</span>
+<span class="keyword">let</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+
+<span class="call">print</span>(john.<span class="property">name</span>) <span class="comment">// =&gt; John</span>
+
+john.<span class="property">age</span> = <span class="number">69</span>
+
+<span class="call">print</span>(john.<span class="property">age</span>) <span class="comment">// =&gt; 69</span></code></pre><div id="tooltip-9_1" class="tooltip"><textarea id="snippet-code-9_1" class="original-code">class Person {
+
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+// reference type
+let john = Person(name: "John", age: 42)
+
+print(john.name) // => John
+
+john.age = 69
+
+print(john.age) // => 69</textarea><button id="copy-button-9_1" onclick="copySnippet('9_1')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html" target="_blank">Structures and Classes</a></p></div></div><div class="card"><div class="flex"><a id="classes/methods"></a><h3><a href="#classes/methods" class="anchor">methods</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+    
+    <span class="keyword">func</span> incrementAge() {
+        age += <span class="number">1</span>
+    }
+}
+
+
+<span class="keyword">let</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+john.<span class="call">incrementAge</span>()
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>) <span class="comment">// =&gt; John 43</span></code></pre><div id="tooltip-9_2" class="tooltip"><textarea id="snippet-code-9_2" class="original-code">class Person {
+
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    
+    func incrementAge() {
+        age += 1
+    }
+}
+
+
+let john = Person(name: "John", age: 42)
+john.incrementAge()
+
+print(john.name, john.age) // => John 43</textarea><button id="copy-button-9_2" onclick="copySnippet('9_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Methods.html" target="_blank">Methods</a></p></div></div><div class="card"><div class="flex"><a id="classes/computed-properties"></a><h3><a href="#classes/computed-properties" class="anchor">computed properties</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+
+    <span class="comment">// let's assume it's 2022 :)</span>
+    <span class="keyword">var</span> birthDate: <span class="type">Int</span> {
+        <span class="number">2022</span> - age
+    }
+}
+
+
+<span class="keyword">let</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>, john.<span class="property">birthDate</span>)
+<span class="comment">// =&gt; John 43 1980</span></code></pre><div id="tooltip-9_3" class="tooltip"><textarea id="snippet-code-9_3" class="original-code">class Person {
+
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+
+    // let's assume it's 2022 :)
+    var birthDate: Int {
+        2022 - age
+    }
+}
+
+
+let john = Person(name: "John", age: 42)
+
+
+print(john.name, john.age, john.birthDate)
+// => John 43 1980</textarea><button id="copy-button-9_3" onclick="copySnippet('9_3')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html" target="_blank">Properties</a></p></div></div><div class="card"><div class="flex"><a id="classes/property-setter-and-getter"></a><h3><a href="#classes/property-setter-and-getter" class="anchor">property setter and getter</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+
+    <span class="comment">// let's assume it's 2022 :)</span>
+    <span class="keyword">var</span> birthDate: <span class="type">Int</span> {
+        <span class="keyword">get</span> {
+            <span class="number">2022</span> - age
+        }
+        <span class="keyword">set</span> {
+            age = <span class="number">2022</span> - newValue
+        }
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+
+john.<span class="property">birthDate</span> = <span class="number">1953</span>
+
+<span class="call">print</span>(john.<span class="property">age</span>)
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>, john.<span class="property">birthDate</span>)
+<span class="comment">// =&gt; John 69 1953</span></code></pre><div id="tooltip-9_4" class="tooltip"><textarea id="snippet-code-9_4" class="original-code">class Person {
+
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+
+    // let's assume it's 2022 :)
+    var birthDate: Int {
+        get {
+            2022 - age
+        }
+        set {
+            age = 2022 - newValue
+        }
+    }
+}
+
+let john = Person(name: "John", age: 42)
+
+john.birthDate = 1953
+
+print(john.age)
+
+print(john.name, john.age, john.birthDate)
+// => John 69 1953</textarea><button id="copy-button-9_4" onclick="copySnippet('9_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html" target="_blank">Properties</a></p></div></div><div class="card"><div class="flex"><a id="classes/static-properties"></a><h3><a href="#classes/static-properties" class="anchor">static properties</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">static let</span> currentYear = <span class="number">2022</span>
+    
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+
+    <span class="comment">// let's assume it's 2022 :)</span>
+    <span class="keyword">var</span> birthDate: <span class="type">Int</span> {
+        <span class="keyword">get</span> {
+            <span class="type">Person</span>.<span class="property">currentYear</span> - age
+        }
+        <span class="keyword">set</span> {
+            age = <span class="type">Person</span>.<span class="property">currentYear</span> - newValue
+        }
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">Person</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+john.<span class="property">birthDate</span> = <span class="number">1953</span>
+<span class="call">print</span>(john.<span class="property">age</span>)
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>, john.<span class="property">birthDate</span>)
+<span class="comment">// =&gt; John 69 1953</span></code></pre><div id="tooltip-9_5" class="tooltip"><textarea id="snippet-code-9_5" class="original-code">class Person {
+
+    static let currentYear = 2022
+    
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+
+    // let's assume it's 2022 :)
+    var birthDate: Int {
+        get {
+            Person.currentYear - age
+        }
+        set {
+            age = Person.currentYear - newValue
+        }
+    }
+}
+
+let john = Person(name: "John", age: 42)
+john.birthDate = 1953
+print(john.age)
+print(john.name, john.age, john.birthDate)
+// => John 69 1953</textarea><button id="copy-button-9_5" onclick="copySnippet('9_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Properties.html" target="_blank">Properties</a></p></div></div><div class="card"><div class="flex"><a id="classes/static-methods"></a><h3><a href="#classes/static-methods" class="anchor">static methods</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+
+    <span class="keyword">static func</span> john() -&gt; <span class="type">Person</span> {
+        .<span class="keyword">init</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">Person</span>.<span class="call">john</span>()
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>) <span class="comment">// =&gt; John 42</span></code></pre><div id="tooltip-9_6" class="tooltip"><textarea id="snippet-code-9_6" class="original-code">class Person {
+
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+
+    static func john() -> Person {
+        .init(name: "John", age: 42)
+    }
+}
+
+let john = Person.john()
+
+print(john.name, john.age) // => John 42</textarea><button id="copy-button-9_6" onclick="copySnippet('9_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Methods.html" target="_blank">Methods</a></p></div></div><div class="card"><div class="flex"><a id="classes/subclassing"></a><h3><a href="#classes/subclassing" class="anchor">subclassing</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+}
+
+<span class="keyword">class</span> John: <span class="type">Person</span> {
+
+    <span class="keyword">init</span>() {
+        <span class="keyword">super</span>.<span class="keyword">init</span>(name: <span class="string">"John"</span>, age: <span class="number">42</span>)
+    }
+}
+
+<span class="keyword">let</span> john = <span class="type">John</span>()
+
+<span class="call">print</span>(john.<span class="property">name</span>, john.<span class="property">age</span>) <span class="comment">// =&gt; John 42</span></code></pre><div id="tooltip-9_7" class="tooltip"><textarea id="snippet-code-9_7" class="original-code">class Person {
+
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+class John: Person {
+
+    init() {
+        super.init(name: "John", age: 42)
+    }
+}
+
+let john = John()
+
+print(john.name, john.age) // => John 42</textarea><button id="copy-button-9_7" onclick="copySnippet('9_7')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html" target="_blank">Inheritance</a></p></div></div><div class="card"><div class="flex"><a id="classes/singleton"></a><h3><a href="#classes/singleton" class="anchor">singleton</a></h3><pre class="swift"><code><span class="comment">// singleton class</span>
+<span class="keyword">final public class</span> Storage {
+
+    <span class="keyword">public static let</span> shated = <span class="type">Storage</span>()
+    
+    <span class="keyword">var</span> limit: <span class="type">Int</span>
+    
+    <span class="keyword">private init</span>(<span class="keyword">_</span> limit: <span class="type">Int</span> = <span class="number">20</span>) {
+        <span class="keyword">self</span>.<span class="property">limit</span> = limit
+    }
+}
+
+<span class="call">print</span>(<span class="type">Storage</span>.<span class="property">shated</span>.<span class="property">limit</span>) <span class="comment">// =&gt; 20</span>
+
+<span class="type">Storage</span>.<span class="property">shated</span>.<span class="property">limit</span> = <span class="number">10</span>
+
+<span class="call">print</span>(<span class="type">Storage</span>.<span class="property">shated</span>.<span class="property">limit</span>) <span class="comment">// =&gt; 10</span></code></pre><div id="tooltip-9_8" class="tooltip"><textarea id="snippet-code-9_8" class="original-code">// singleton class
+final public class Storage {
+
+    public static let shated = Storage()
+    
+    var limit: Int
+    
+    private init(_ limit: Int = 20) {
+        self.limit = limit
+    }
+}
+
+print(Storage.shated.limit) // => 20
+
+Storage.shated.limit = 10
+
+print(Storage.shated.limit) // => 10</textarea><button id="copy-button-9_8" onclick="copySnippet('9_8')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Initialization.html" target="_blank">Initialization</a></p></div></div><div class="card"><div class="flex"><a id="classes/deinit"></a><h3><a href="#classes/deinit" class="anchor">deinit</a></h3><pre class="swift"><code><span class="keyword">class</span> Person {
+
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> age: <span class="type">Int</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">age</span> = age
+    }
+    
+    <span class="keyword">deinit</span> {
+        <span class="call">print</span>(<span class="string">"Deinit</span> \(name)<span class="string">."</span>)
+    }
+}
+
+<span class="keyword">var</span> john: <span class="type">Person</span>? = <span class="type">Person</span>(
+    name: <span class="string">"John"</span>,
+    age: <span class="number">42</span>
+)
+
+<span class="comment">// force call deinit</span>
+john = <span class="keyword">nil</span>
+
+<span class="comment">// =&gt; Deinit John.</span></code></pre><div id="tooltip-9_9" class="tooltip"><textarea id="snippet-code-9_9" class="original-code">class Person {
+
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    
+    deinit {
+        print("Deinit \(name).")
+    }
+}
+
+var john: Person? = Person(
+    name: "John",
+    age: 42
+)
+
+// force call deinit
+john = nil
+
+// => Deinit John.</textarea><button id="copy-button-9_9" onclick="copySnippet('9_9')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html" target="_blank">Deinitialization</a></p></div></div><div class="card"><div class="flex"><a id="classes/breaking-reference-cycles"></a><h3><a href="#classes/breaking-reference-cycles" class="anchor">breaking reference cycles</a></h3><pre class="swift"><code><span class="keyword">class</span> Address {
+    <span class="keyword">var</span> line: <span class="type">String</span>
+    <span class="keyword">weak var</span> person: <span class="type">Person</span>?
+
+    <span class="keyword">init</span>(line: <span class="type">String</span>, person: <span class="type">Person</span>? = <span class="keyword">nil</span>) {
+        <span class="keyword">self</span>.<span class="property">line</span> = line
+        <span class="keyword">self</span>.<span class="property">person</span> = person
+    }
+
+    <span class="keyword">deinit</span> { <span class="call">print</span>(<span class="string">"Address deinit"</span>) }
+}
+
+<span class="keyword">class</span> Person {
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    <span class="keyword">var</span> address: <span class="type">Address</span>?
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>, address: <span class="type">Address</span>? = <span class="keyword">nil</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+        <span class="keyword">self</span>.<span class="property">address</span> = address
+    }
+    
+    <span class="keyword">deinit</span> { <span class="call">print</span>(<span class="string">"Person deinit"</span>) }
+}
+
+<span class="keyword">var</span> person: <span class="type">Person</span>? = <span class="type">Person</span>(name: <span class="string">"John"</span>)
+<span class="keyword">var</span> address: <span class="type">Address</span>? = <span class="type">Address</span>(line: <span class="string">"Six street 9."</span>)
+person?.<span class="property">address</span> = address
+address?.<span class="property">person</span> = person
+
+person = <span class="keyword">nil</span>
+address = <span class="keyword">nil</span>
+
+<span class="comment">// =&gt; Person deinit
+// =&gt; Address deinit</span></code></pre><div id="tooltip-9_10" class="tooltip"><textarea id="snippet-code-9_10" class="original-code">class Address {
+    var line: String
+    weak var person: Person?
+
+    init(line: String, person: Person? = nil) {
+        self.line = line
+        self.person = person
+    }
+
+    deinit { print("Address deinit") }
+}
+
+class Person {
+    var name: String
+    var address: Address?
+    
+    init(name: String, address: Address? = nil) {
+        self.name = name
+        self.address = address
+    }
+    
+    deinit { print("Person deinit") }
+}
+
+var person: Person? = Person(name: "John")
+var address: Address? = Address(line: "Six street 9.")
+person?.address = address
+address?.person = person
+
+person = nil
+address = nil
+
+// => Person deinit
+// => Address deinit</textarea><button id="copy-button-9_10" onclick="copySnippet('9_10')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html#ID51" target="_blank">Automatic Reference Counting</a></p></div></div><div class="card"><div class="flex"><a id="classes/access-control"></a><h3><a href="#classes/access-control" class="anchor">access control</a></h3><pre class="swift"><code><span class="comment">/**
+ open
+ final
+ public
+ internal
+ private
+ fileprivate
+*/</span>
+
+<span class="keyword">open class</span> John: <span class="type">Person</span> {
+
+    <span class="keyword">private func</span> sayHello() {
+        <span class="call">print</span>(<span class="string">"Hello!"</span>)
+    }
+}</code></pre><div id="tooltip-9_11" class="tooltip"><textarea id="snippet-code-9_11" class="original-code">/**
+ open
+ final
+ public
+ internal
+ private
+ fileprivate
+*/
+
+open class John: Person {
+
+    private func sayHello() {
+        print("Hello!")
+    }
+}</textarea><button id="copy-button-9_11" onclick="copySnippet('9_11')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html" target="_blank">Access Control</a></p></div></div><div class="card"><div class="flex"><a id="classes/type-casting"></a><h3><a href="#classes/type-casting" class="anchor">type casting</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Person {}
+
+<span class="keyword">class</span> John: <span class="type">Person</span> {}
+<span class="keyword">class</span> Bob: <span class="type">Person</span> {}
+
+<span class="keyword">let</span> john: <span class="type">Any</span> = <span class="type">John</span>()
+<span class="keyword">let</span> bob: <span class="type">Bob</span> = <span class="type">Bob</span>()
+
+<span class="call">print</span>(john <span class="keyword">is</span> <span class="type">Person</span>) <span class="comment">// =&gt; true</span>
+
+<span class="keyword">let</span> p1 = bob <span class="keyword">as</span> <span class="type">Person</span> <span class="comment">// Person</span>
+<span class="keyword">let</span> p2 = john <span class="keyword">as</span>? <span class="type">Person</span> <span class="comment">// Person?</span>
+<span class="keyword">let</span> p3 = john <span class="keyword">as</span>! <span class="type">Person</span> <span class="comment">// Person</span></code></pre><div id="tooltip-9_12" class="tooltip"><textarea id="snippet-code-9_12" class="original-code">protocol Person {}
+
+class John: Person {}
+class Bob: Person {}
+
+let john: Any = John()
+let bob: Bob = Bob()
+
+print(john is Person) // => true
+
+let p1 = bob as Person // Person
+let p2 = john as? Person // Person?
+let p3 = john as! Person // Person</textarea><button id="copy-button-9_12" onclick="copySnippet('9_12')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html" target="_blank">Type Casting</a></p></div></div></div></section><section><a id="protocols"></a><h2><a href="#protocols" class="anchor">Protocols</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="protocols/basics"></a><h3><a href="#protocols/basics" class="anchor">basics</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Animal {
+    <span class="keyword">var</span> name: <span class="type">String</span> { <span class="keyword">get set</span> }
+    <span class="keyword">var</span> numberOflegs: <span class="type">Int</span> { <span class="keyword">get</span> }
+
+    <span class="keyword">func</span> makeSound()
+}</code></pre><div id="tooltip-10_1" class="tooltip"><textarea id="snippet-code-10_1" class="original-code">protocol Animal {
+    var name: String { get set }
+    var numberOflegs: Int { get }
+
+    func makeSound()
+}</textarea><button id="copy-button-10_1" onclick="copySnippet('10_1')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html" target="_blank">Protocols</a></p></div></div><div class="card"><div class="flex"><a id="protocols/property-requirements"></a><h3><a href="#protocols/property-requirements" class="anchor">property requirements</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Animal {
+    <span class="keyword">var</span> name: <span class="type">String</span> { <span class="keyword">get</span> }
+}
+
+<span class="keyword">struct</span> Cat: <span class="type">Animal</span> {
+    <span class="keyword">var</span> name: <span class="type">String</span>
+}
+
+<span class="keyword">let</span> lucky = <span class="type">Cat</span>(name: <span class="string">"Lucky"</span>)
+
+<span class="call">print</span>(lucky.<span class="property">name</span>) <span class="comment">// =&gt; Lucky</span></code></pre><div id="tooltip-10_2" class="tooltip"><textarea id="snippet-code-10_2" class="original-code">protocol Animal {
+    var name: String { get }
+}
+
+struct Cat: Animal {
+    var name: String
+}
+
+let lucky = Cat(name: "Lucky")
+
+print(lucky.name) // => Lucky</textarea><button id="copy-button-10_2" onclick="copySnippet('10_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#ID269" target="_blank">Property Requirements</a></p></div></div><div class="card"><div class="flex"><a id="protocols/method-requirements"></a><h3><a href="#protocols/method-requirements" class="anchor">method requirements</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Animal {
+    <span class="keyword">var</span> name: <span class="type">String</span> { <span class="keyword">get</span> }
+    <span class="keyword">func</span> makeSound()
+}
+
+<span class="keyword">struct</span> Cat: <span class="type">Animal</span> {
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    
+    <span class="keyword">func</span> makeSound() {
+        <span class="call">print</span>(<span class="string">"Meow"</span>)
+    }
+}
+
+<span class="keyword">let</span> lucky = <span class="type">Cat</span>(name: <span class="string">"Lucky"</span>)
+
+lucky.<span class="call">makeSound</span>() <span class="comment">// =&gt; Meow</span></code></pre><div id="tooltip-10_3" class="tooltip"><textarea id="snippet-code-10_3" class="original-code">protocol Animal {
+    var name: String { get }
+    func makeSound()
+}
+
+struct Cat: Animal {
+    var name: String
+    
+    func makeSound() {
+        print("Meow")
+    }
+}
+
+let lucky = Cat(name: "Lucky")
+
+lucky.makeSound() // => Meow</textarea><button id="copy-button-10_3" onclick="copySnippet('10_3')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#ID270" target="_blank">Method Requirements</a></p></div></div><div class="card"><div class="flex"><a id="protocols/extensions"></a><h3><a href="#protocols/extensions" class="anchor">extensions</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Animal {
+    <span class="keyword">var</span> name: <span class="type">String</span> { <span class="keyword">get</span> }
+    <span class="keyword">func</span> makeSound()
+}
+
+<span class="keyword">struct</span> Cat: <span class="type">Animal</span> {
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    
+    <span class="keyword">func</span> makeSound() {
+        <span class="call">print</span>(<span class="string">"Meow"</span>)
+    }
+}
+
+<span class="keyword">extension</span> <span class="type">Animal</span> {
+
+    <span class="keyword">func</span> sleep() {
+        <span class="call">print</span>(<span class="string">"Zzz..."</span>)
+    }
+}
+
+<span class="keyword">let</span> lucky = <span class="type">Cat</span>(name: <span class="string">"Lucky"</span>)
+
+lucky.<span class="call">sleep</span>() <span class="comment">// =&gt; Zzz...</span></code></pre><div id="tooltip-10_4" class="tooltip"><textarea id="snippet-code-10_4" class="original-code">protocol Animal {
+    var name: String { get }
+    func makeSound()
+}
+
+struct Cat: Animal {
+    var name: String
+    
+    func makeSound() {
+        print("Meow")
+    }
+}
+
+extension Animal {
+
+    func sleep() {
+        print("Zzz...")
+    }
+}
+
+let lucky = Cat(name: "Lucky")
+
+lucky.sleep() // => Zzz...</textarea><button id="copy-button-10_4" onclick="copySnippet('10_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Extensions.html" target="_blank">Extensions</a></p></div></div><div class="card"><div class="flex"><a id="protocols/conformance-with-extensions"></a><h3><a href="#protocols/conformance-with-extensions" class="anchor">conformance with extensions</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Animal {
+    <span class="keyword">var</span> name: <span class="type">String</span> { <span class="keyword">get</span> }
+    <span class="keyword">func</span> makeSound()
+}
+
+<span class="keyword">class</span> Cat {
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    
+    <span class="keyword">init</span>(name: <span class="type">String</span>) {
+        <span class="keyword">self</span>.<span class="property">name</span> = name
+    }
+}
+
+<span class="keyword">extension</span> <span class="type">Cat</span>: <span class="type">Animal</span> {
+    <span class="keyword">func</span> makeSound() {
+        <span class="call">print</span>(<span class="string">"Meow"</span>)
+    }
+}
+
+<span class="keyword">let</span> lucky = <span class="type">Cat</span>(name: <span class="string">"Lucky"</span>)
+
+lucky.<span class="call">makeSound</span>() <span class="comment">// =&gt; Meow</span></code></pre><div id="tooltip-10_5" class="tooltip"><textarea id="snippet-code-10_5" class="original-code">protocol Animal {
+    var name: String { get }
+    func makeSound()
+}
+
+class Cat {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+extension Cat: Animal {
+    func makeSound() {
+        print("Meow")
+    }
+}
+
+let lucky = Cat(name: "Lucky")
+
+lucky.makeSound() // => Meow</textarea><button id="copy-button-10_5" onclick="copySnippet('10_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#ID277" target="_blank">Adding Protocol Conformance with an Extension</a></p></div></div><div class="card"><div class="flex"><a id="protocols/function-overiding-with-extensions"></a><h3><a href="#protocols/function-overiding-with-extensions" class="anchor">function overiding with extensions</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Animal {
+    <span class="keyword">var</span> name: <span class="type">String</span> { <span class="keyword">get</span> }
+    <span class="keyword">func</span> makeSound()
+}
+
+<span class="keyword">struct</span> Cat: <span class="type">Animal</span> {
+    <span class="keyword">var</span> name: <span class="type">String</span>
+    
+    <span class="keyword">func</span> makeSound() {
+        <span class="call">print</span>(<span class="string">"Meow"</span>)
+    }
+}
+
+<span class="keyword">extension</span> <span class="type">Animal</span> {
+
+    <span class="keyword">func</span> sleep() {
+        <span class="call">print</span>(<span class="string">"Zzz..."</span>)
+    }
+}
+
+<span class="keyword">extension</span> <span class="type">Cat</span> {
+    <span class="keyword">func</span> sleep() {
+        <span class="call">print</span>(<span class="string">"Purr..."</span>)
+    }
+}
+
+<span class="keyword">let</span> lucky = <span class="type">Cat</span>(name: <span class="string">"Lucky"</span>)
+
+lucky.<span class="call">sleep</span>() <span class="comment">// =&gt; Purr...</span></code></pre><div id="tooltip-10_6" class="tooltip"><textarea id="snippet-code-10_6" class="original-code">protocol Animal {
+    var name: String { get }
+    func makeSound()
+}
+
+struct Cat: Animal {
+    var name: String
+    
+    func makeSound() {
+        print("Meow")
+    }
+}
+
+extension Animal {
+
+    func sleep() {
+        print("Zzz...")
+    }
+}
+
+extension Cat {
+    func sleep() {
+        print("Purr...")
+    }
+}
+
+let lucky = Cat(name: "Lucky")
+
+lucky.sleep() // => Purr...</textarea><button id="copy-button-10_6" onclick="copySnippet('10_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Extensions.html" target="_blank">Extensions</a></p></div></div></div></section><section><a id="generics"></a><h2><a href="#generics" class="anchor">Generics</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="generics/the-problem"></a><h3><a href="#generics/the-problem" class="anchor">the problem</a></h3><pre class="swift"><code><span class="keyword">func</span> swapTwoValues(
+    <span class="keyword">_</span> a: <span class="keyword">inout</span> <span class="type">Int</span>,
+    <span class="keyword">_</span> b: <span class="keyword">inout</span> <span class="type">Int</span>)
+{
+    (a, b) = (b, a)
+}
+<span class="keyword">func</span> swapTwoValues(
+    <span class="keyword">_</span> a: <span class="keyword">inout</span> <span class="type">String</span>,
+    <span class="keyword">_</span> b: <span class="keyword">inout</span> <span class="type">String</span>)
+{
+    (a, b) = (b, a)
+}
+
+<span class="keyword">var</span> a = <span class="number">420</span>
+<span class="keyword">var</span> b = <span class="number">69</span>
+<span class="call">swapTwoValues</span>(&amp;a, &amp;b)
+<span class="call">print</span>(a, b)
+
+<span class="keyword">var</span> x = <span class="string">"foo"</span>
+<span class="keyword">var</span> y = <span class="string">"bar"</span>
+<span class="call">swapTwoValues</span>(&amp;x, &amp;y)
+<span class="call">print</span>(x, y)</code></pre><div id="tooltip-11_1" class="tooltip"><textarea id="snippet-code-11_1" class="original-code">func swapTwoValues(
+    _ a: inout Int,
+    _ b: inout Int)
+{
+    (a, b) = (b, a)
+}
+func swapTwoValues(
+    _ a: inout String,
+    _ b: inout String)
+{
+    (a, b) = (b, a)
+}
+
+var a = 420
+var b = 69
+swapTwoValues(&a, &b)
+print(a, b)
+
+var x = "foo"
+var y = "bar"
+swapTwoValues(&x, &y)
+print(x, y)</textarea><button id="copy-button-11_1" onclick="copySnippet('11_1')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="generics/generic-functions"></a><h3><a href="#generics/generic-functions" class="anchor">generic functions</a></h3><pre class="swift"><code><span class="comment">// T is a generic placeholder for the type</span>
+<span class="keyword">func</span> swapTwoValues&lt;T&gt;(
+    <span class="keyword">_</span> a: <span class="keyword">inout</span> <span class="type">T</span>,
+    <span class="keyword">_</span> b: <span class="keyword">inout</span> <span class="type">T</span>)
+{
+    (a, b) = (b, a)
+}
+
+<span class="keyword">var</span> a = <span class="number">420</span>
+<span class="keyword">var</span> b = <span class="number">69</span>
+<span class="call">swapTwoValues</span>(&amp;a, &amp;b)
+<span class="call">print</span>(a, b)
+
+<span class="keyword">var</span> x = <span class="string">"foo"</span>
+<span class="keyword">var</span> y = <span class="string">"bar"</span>
+<span class="call">swapTwoValues</span>(&amp;x, &amp;y)
+<span class="call">print</span>(x, y)</code></pre><div id="tooltip-11_2" class="tooltip"><textarea id="snippet-code-11_2" class="original-code">// T is a generic placeholder for the type
+func swapTwoValues<T>(
+    _ a: inout T,
+    _ b: inout T)
+{
+    (a, b) = (b, a)
+}
+
+var a = 420
+var b = 69
+swapTwoValues(&a, &b)
+print(a, b)
+
+var x = "foo"
+var y = "bar"
+swapTwoValues(&x, &y)
+print(x, y)</textarea><button id="copy-button-11_2" onclick="copySnippet('11_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html" target="_blank">Generics</a></p></div></div><div class="card"><div class="flex"><a id="generics/generic-types"></a><h3><a href="#generics/generic-types" class="anchor">generic types</a></h3><pre class="swift"><code><span class="keyword">struct</span> Stack&lt;Element&gt; {
+    <span class="keyword">var</span> items: [<span class="type">Element</span>] = []
+
+    <span class="keyword">mutating func</span> push(<span class="keyword">_</span> item: <span class="type">Element</span>) {
+        items.<span class="call">append</span>(item)
+    }
+
+    <span class="keyword">mutating func</span> pop(){
+        items.<span class="call">removeLast</span>()
+    }
+}
+
+<span class="keyword">var</span> stack = <span class="type">Stack</span>&lt;<span class="type">String</span>&gt;()
+
+stack.<span class="call">push</span>(<span class="string">"a"</span>)
+stack.<span class="call">push</span>(<span class="string">"b"</span>)
+stack.<span class="call">push</span>(<span class="string">"c"</span>)
+stack.<span class="call">pop</span>()
+
+<span class="call">print</span>(stack.<span class="property">items</span>) <span class="comment">// ["a", "b"]</span></code></pre><div id="tooltip-11_3" class="tooltip"><textarea id="snippet-code-11_3" class="original-code">struct Stack<Element> {
+    var items: [Element] = []
+
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+
+    mutating func pop(){
+        items.removeLast()
+    }
+}
+
+var stack = Stack<String>()
+
+stack.push("a")
+stack.push("b")
+stack.push("c")
+stack.pop()
+
+print(stack.items) // ["a", "b"]</textarea><button id="copy-button-11_3" onclick="copySnippet('11_3')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html" target="_blank">Generics</a></p></div></div><div class="card"><div class="flex"><a id="generics/protocols-with-associated-types"></a><h3><a href="#generics/protocols-with-associated-types" class="anchor">protocols with associated types</a></h3><pre class="swift"><code><span class="keyword">protocol</span> Container {
+    <span class="keyword">associatedtype</span> Item
+    <span class="keyword">mutating func</span> push(<span class="keyword">_</span> item: <span class="type">Item</span>)
+}
+
+<span class="keyword">struct</span> Stack&lt;Element&gt;: <span class="type">Container</span> {
+    <span class="keyword">var</span> items: [<span class="type">Element</span>] = []
+
+    <span class="keyword">mutating func</span> push(<span class="keyword">_</span> item: <span class="type">Element</span>) {
+        items.<span class="call">append</span>(item)
+    }
+}
+
+<span class="keyword">var</span> stack = <span class="type">Stack</span>&lt;<span class="type">String</span>&gt;()
+
+stack.<span class="call">push</span>(<span class="string">"a"</span>)
+stack.<span class="call">push</span>(<span class="string">"b"</span>)
+stack.<span class="call">push</span>(<span class="string">"c"</span>)
+
+<span class="call">print</span>(stack.<span class="property">items</span>) <span class="comment">// ["a", "b", "c"]</span></code></pre><div id="tooltip-11_4" class="tooltip"><textarea id="snippet-code-11_4" class="original-code">protocol Container {
+    associatedtype Item
+    mutating func push(_ item: Item)
+}
+
+struct Stack<Element>: Container {
+    var items: [Element] = []
+
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+}
+
+var stack = Stack<String>()
+
+stack.push("a")
+stack.push("b")
+stack.push("c")
+
+print(stack.items) // ["a", "b", "c"]</textarea><button id="copy-button-11_4" onclick="copySnippet('11_4')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189" target="_blank">Associated Types</a></p></div></div><div class="card"><div class="flex"><a id="generics/extensions-and-type-constraints"></a><h3><a href="#generics/extensions-and-type-constraints" class="anchor">extensions and type constraints</a></h3><pre class="swift"><code><span class="keyword">extension</span> <span class="type">Array</span> <span class="keyword">where</span> <span class="type">Element</span> == <span class="type">Int</span> {
+
+    <span class="keyword">func</span> printSum() {
+        <span class="keyword">var</span> sum: <span class="type">Int</span> =  <span class="number">0</span>
+        <span class="keyword">for</span> i <span class="keyword">in self</span> {
+            sum += i
+        }
+        <span class="call">print</span>(sum)
+    }
+}
+
+<span class="keyword">let</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]
+
+array.<span class="call">printSum</span>() <span class="comment">// =&gt; 21</span></code></pre><div id="tooltip-11_5" class="tooltip"><textarea id="snippet-code-11_5" class="original-code">extension Array where Element == Int {
+
+    func printSum() {
+        var sum: Int =  0
+        for i in self {
+            sum += i
+        }
+        print(sum)
+    }
+}
+
+let array = [1, 2, 3, 4, 5, 6]
+
+array.printSum() // => 21</textarea><button id="copy-button-11_5" onclick="copySnippet('11_5')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID185" target="_blank">Extending a Generic Type</a></p></div></div><div class="card"><div class="flex"><a id="generics/functions-and-type-constraints"></a><h3><a href="#generics/functions-and-type-constraints" class="anchor">functions and type constraints</a></h3><pre class="swift"><code><span class="keyword">extension</span> <span class="type">Array</span> {
+    
+    <span class="keyword">func</span> printSum() <span class="keyword">where</span> <span class="type">Element</span> == <span class="type">Int</span> {
+        <span class="keyword">var</span> sum: <span class="type">Int</span> =  <span class="number">0</span>
+        <span class="keyword">for</span> i <span class="keyword">in self</span> {
+            sum += i
+        }
+        <span class="call">print</span>(sum)
+    }
+}
+
+<span class="keyword">func</span> checkIsEqual&lt;T: <span class="type">Equatable</span>&gt;(
+    <span class="keyword">_</span> value1: <span class="type">T</span>,
+    <span class="keyword">_</span> value2: <span class="type">T</span>
+) -&gt; <span class="type">Bool</span> {
+    value1 == value2
+}
+
+<span class="keyword">let</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]
+array.<span class="call">printSum</span>() <span class="comment">// =&gt; 21</span>
+
+<span class="call">print</span>(<span class="call">checkIsEqual</span>(<span class="string">"420"</span>, <span class="string">"69"</span>))
+<span class="comment">// =&gt; false</span></code></pre><div id="tooltip-11_6" class="tooltip"><textarea id="snippet-code-11_6" class="original-code">extension Array {
+    
+    func printSum() where Element == Int {
+        var sum: Int =  0
+        for i in self {
+            sum += i
+        }
+        print(sum)
+    }
+}
+
+func checkIsEqual<T: Equatable>(
+    _ value1: T,
+    _ value2: T
+) -> Bool {
+    value1 == value2
+}
+
+let array = [1, 2, 3, 4, 5, 6]
+array.printSum() // => 21
+
+print(checkIsEqual("420", "69"))
+// => false</textarea><button id="copy-button-11_6" onclick="copySnippet('11_6')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID186" target="_blank">Type Constraints</a></p></div></div></div></section><section><a id="concurrency"></a><h2><a href="#concurrency" class="anchor">Concurrency</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="concurrency/async-await"></a><h3><a href="#concurrency/async-await" class="anchor">async, await</a></h3><pre class="swift"><code><span class="comment">// async function</span>
+<span class="keyword">func</span> performTask() <span class="keyword">async</span> {
+    <span class="comment">// ...</span>
+}
+
+<span class="keyword">await</span> <span class="call">performTask</span>()
+
+
+<span class="comment">// async throwing function</span>
+<span class="keyword">func</span> performThrowingTask() <span class="keyword">async throws</span> {
+    <span class="comment">// ...</span>
+}
+
+<span class="keyword">try await</span> <span class="call">performTask</span>()</code></pre><div id="tooltip-12_1" class="tooltip"><textarea id="snippet-code-12_1" class="original-code">// async function
+func performTask() async {
+    // ...
+}
+
+await performTask()
+
+
+// async throwing function
+func performThrowingTask() async throws {
+    // ...
+}
+
+try await performTask()</textarea><button id="copy-button-12_1" onclick="copySnippet('12_1')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/checked-continuation"></a><h3><a href="#concurrency/checked-continuation" class="anchor">checked continuation</a></h3><pre class="swift"><code><span class="keyword">enum</span> CustomError: <span class="type">Error</span> {
+    <span class="keyword">case</span> ouch
+}
+
+<span class="keyword">func</span> performTask() <span class="keyword">async</span> -&gt; <span class="type">String</span> {
+    <span class="keyword">await</span> <span class="call">withCheckedContinuation</span> { c <span class="keyword">in</span>
+        c.<span class="call">resume</span>(returning: <span class="string">"foo"</span>)
+    }
+}
+
+<span class="keyword">func</span> performThrowingTask() <span class="keyword">async throws</span> -&gt; <span class="type">String</span> {
+    <span class="keyword">try await</span> <span class="call">withCheckedThrowingContinuation</span> { c <span class="keyword">in</span>
+        c.<span class="call">resume</span>(throwing: <span class="type">CustomError</span>.<span class="property">ouch</span>)
+    }
+}                    </code></pre><div id="tooltip-12_2" class="tooltip"><textarea id="snippet-code-12_2" class="original-code">enum CustomError: Error {
+    case ouch
+}
+
+func performTask() async -> String {
+    await withCheckedContinuation { c in
+        c.resume(returning: "foo")
+    }
+}
+
+func performThrowingTask() async throws -> String {
+    try await withCheckedThrowingContinuation { c in
+        c.resume(throwing: CustomError.ouch)
+    }
+}                    </textarea><button id="copy-button-12_2" onclick="copySnippet('12_2')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/unsafe-continuation"></a><h3><a href="#concurrency/unsafe-continuation" class="anchor">unsafe continuation</a></h3><pre class="swift"><code><span class="keyword">enum</span> CustomError: <span class="type">Error</span> {
+    <span class="keyword">case</span> ouch
+}
+
+<span class="keyword">func</span> perormTask() <span class="keyword">async</span> -&gt; <span class="type">String</span> {
+    <span class="keyword">await</span> <span class="call">withUnsafeContinuation</span> { c <span class="keyword">in</span>
+        c.<span class="call">resume</span>(with: .<span class="call">success</span>(<span class="string">"foo"</span>))
+    }
+}
+
+<span class="keyword">func</span> performThrowingTask() <span class="keyword">async throws</span> -&gt; <span class="type">String</span> {
+    <span class="keyword">try await</span> <span class="call">withUnsafeThrowingContinuation</span> { c <span class="keyword">in</span>
+        c.<span class="call">resume</span>(with: .<span class="call">failure</span>(<span class="type">CustomError</span>.<span class="property">ouch</span>))
+    }
+}</code></pre><div id="tooltip-12_3" class="tooltip"><textarea id="snippet-code-12_3" class="original-code">enum CustomError: Error {
+    case ouch
+}
+
+func perormTask() async -> String {
+    await withUnsafeContinuation { c in
+        c.resume(with: .success("foo"))
+    }
+}
+
+func performThrowingTask() async throws -> String {
+    try await withUnsafeThrowingContinuation { c in
+        c.resume(with: .failure(CustomError.ouch))
+    }
+}</textarea><button id="copy-button-12_3" onclick="copySnippet('12_3')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/async-main-program"></a><h3><a href="#concurrency/async-main-program" class="anchor">async main program</a></h3><pre class="swift"><code><span class="keyword">@main
+struct</span> MyProgram {
+
+    <span class="keyword">static func</span> main() <span class="keyword">async</span> {
+        <span class="keyword">let</span> result = <span class="keyword">await</span> <span class="call">performTask</span>()
+        <span class="keyword">switch</span> result {
+        <span class="keyword">case</span> .<span class="dotAccess">success</span>(<span class="keyword">let</span> value):
+            <span class="call">print</span>(value)
+            <span class="call">exit</span>(<span class="type">EXIT_SUCCESS</span>)
+        <span class="keyword">case</span> .<span class="dotAccess">failure</span>(<span class="keyword">let</span> error):
+            <span class="call">fatalError</span>(error.<span class="property">localizedDescription</span>)
+        }
+    }
+}
+</code></pre><div id="tooltip-12_4" class="tooltip"><textarea id="snippet-code-12_4" class="original-code">@main
+struct MyProgram {
+
+    static func main() async {
+        let result = await performTask()
+        switch result {
+        case .success(let value):
+            print(value)
+            exit(EXIT_SUCCESS)
+        case .failure(let error):
+            fatalError(error.localizedDescription)
+        }
+    }
+}
+</textarea><button id="copy-button-12_4" onclick="copySnippet('12_4')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/async-calls-from-sync-context"></a><h3><a href="#concurrency/async-calls-from-sync-context" class="anchor">async calls from sync context</a></h3><pre class="swift"><code><span class="keyword">func</span> performTask() <span class="keyword">async</span> {
+    <span class="call">print</span>(<span class="string">"Start."</span>)
+    <span class="comment">// wait for 5 seconds...</span>
+    <span class="call">sleep</span>(<span class="number">5</span>)
+    <span class="comment">// try? await Task.sleep(nanoseconds: 5 * 1_000_000_000)</span>
+    <span class="call">print</span>(<span class="string">"Done."</span>)
+}
+
+<span class="type">Task</span>.<span class="call">detached</span> {
+    <span class="keyword">await</span> <span class="call">performTask</span>()
+
+    <span class="call">exit</span>(<span class="type">EXIT_SUCCESS</span>)
+}
+<span class="call">dispatchMain</span>()</code></pre><div id="tooltip-12_5" class="tooltip"><textarea id="snippet-code-12_5" class="original-code">func performTask() async {
+    print("Start.")
+    // wait for 5 seconds...
+    sleep(5)
+    // try? await Task.sleep(nanoseconds: 5 * 1_000_000_000)
+    print("Done.")
+}
+
+Task.detached {
+    await performTask()
+
+    exit(EXIT_SUCCESS)
+}
+dispatchMain()</textarea><button id="copy-button-12_5" onclick="copySnippet('12_5')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/parallel-execution"></a><h3><a href="#concurrency/parallel-execution" class="anchor">parallel execution</a></h3><pre class="swift"><code><span class="keyword">func</span> performTask(<span class="keyword">_</span> wait: <span class="type">Int</span>) <span class="keyword">async</span> {
+    <span class="call">print</span>(<span class="string">"Sleep for (</span>\(wait)<span class="string">) seconds..."</span>)
+    <span class="call">sleep</span>(<span class="type">UInt32</span>(wait))
+    <span class="call">print</span>(<span class="string">"Slept</span> \(wait) <span class="string">seconds."</span>)
+}
+
+<span class="keyword">async let</span> t1: () = <span class="call">performTask</span>(<span class="number">3</span>)
+<span class="keyword">async let</span> t2: () = <span class="call">performTask</span>(<span class="number">1</span>)
+<span class="keyword">async let</span> t3: () = <span class="call">performTask</span>(<span class="number">2</span>)
+
+<span class="comment">// executing tasks in parallel</span>
+<span class="keyword">_</span> = <span class="keyword">await</span> [t1, t2, t3]
+</code></pre><div id="tooltip-12_6" class="tooltip"><textarea id="snippet-code-12_6" class="original-code">func performTask(_ wait: Int) async {
+    print("Sleep for (\(wait)) seconds...")
+    sleep(UInt32(wait))
+    print("Slept \(wait) seconds.")
+}
+
+async let t1: () = performTask(3)
+async let t2: () = performTask(1)
+async let t3: () = performTask(2)
+
+// executing tasks in parallel
+_ = await [t1, t2, t3]
+</textarea><button id="copy-button-12_6" onclick="copySnippet('12_6')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/task-groups"></a><h3><a href="#concurrency/task-groups" class="anchor">task groups</a></h3><pre class="swift"><code><span class="keyword">func</span> performTask(<span class="keyword">_</span> wait: <span class="type">Int</span>) <span class="keyword">async</span> -&gt; <span class="type">Int</span> {
+    <span class="call">print</span>(<span class="string">"Sleep for (</span>\(wait)<span class="string">) seconds..."</span>)
+    <span class="call">sleep</span>(<span class="type">UInt32</span>(wait))
+    <span class="call">print</span>(<span class="string">"Slept</span> \(wait) <span class="string">seconds."</span>)
+    <span class="keyword">return</span> wait
+}
+
+<span class="keyword">await</span> <span class="call">withTaskGroup</span>(of: <span class="type">Int</span>.<span class="keyword">self</span>) { group <span class="keyword">in</span>
+    group.<span class="call">addTask</span> { <span class="keyword">await</span> <span class="call">performTask</span>(<span class="number">1</span>) }
+    group.<span class="call">addTask</span> { <span class="keyword">await</span> <span class="call">performTask</span>(<span class="number">2</span>) }
+    group.<span class="call">addTask</span> { <span class="keyword">await</span> <span class="call">performTask</span>(<span class="number">3</span>) }
+
+    <span class="keyword">var</span> sum: <span class="type">Int</span> = <span class="number">0</span>
+    <span class="keyword">for await</span> res <span class="keyword">in</span> group {
+        sum += res
+    }
+    <span class="call">print</span>(sum)
+}</code></pre><div id="tooltip-12_7" class="tooltip"><textarea id="snippet-code-12_7" class="original-code">func performTask(_ wait: Int) async -> Int {
+    print("Sleep for (\(wait)) seconds...")
+    sleep(UInt32(wait))
+    print("Slept \(wait) seconds.")
+    return wait
+}
+
+await withTaskGroup(of: Int.self) { group in
+    group.addTask { await performTask(1) }
+    group.addTask { await performTask(2) }
+    group.addTask { await performTask(3) }
+
+    var sum: Int = 0
+    for await res in group {
+        sum += res
+    }
+    print(sum)
+}</textarea><button id="copy-button-12_7" onclick="copySnippet('12_7')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/different-task-results"></a><h3><a href="#concurrency/different-task-results" class="anchor">different task results</a></h3><pre class="swift"><code><span class="keyword">func</span> intTask() <span class="keyword">async</span> -&gt; <span class="type">Int</span> { <span class="number">42</span> }
+<span class="keyword">func</span> stringTask() <span class="keyword">async</span> -&gt; <span class="type">String</span> { <span class="string">"foo"</span> }
+
+<span class="keyword">enum</span> TaskResults {
+    <span class="keyword">case</span> first(<span class="type">Int</span>)
+    <span class="keyword">case</span> second(<span class="type">String</span>)
+}
+
+<span class="keyword">await</span> <span class="call">withTaskGroup</span>(of: <span class="type">TaskResults</span>.<span class="keyword">self</span>) { group <span class="keyword">in</span>
+    group.<span class="call">addTask</span> { .<span class="call">first</span>(await <span class="call">intTask</span>()) }
+    group.<span class="call">addTask</span> { .<span class="call">second</span>(await <span class="call">stringTask</span>()) }
+
+    <span class="keyword">var</span> results: [<span class="type">Any</span>] = []
+    <span class="keyword">for await</span> res <span class="keyword">in</span> group {
+        <span class="keyword">switch</span> res {
+        <span class="keyword">case</span> .<span class="dotAccess">first</span>(<span class="keyword">let</span> value):
+            results.<span class="call">append</span>(value)
+        <span class="keyword">case</span> .<span class="dotAccess">second</span>(<span class="keyword">let</span> value):
+            results.<span class="call">append</span>(value)
+        }
+    }
+    <span class="call">print</span>(results)
+}
+
+<span class="comment">// =&gt; [42, "foo"]</span></code></pre><div id="tooltip-12_8" class="tooltip"><textarea id="snippet-code-12_8" class="original-code">func intTask() async -> Int { 42 }
+func stringTask() async -> String { "foo" }
+
+enum TaskResults {
+    case first(Int)
+    case second(String)
+}
+
+await withTaskGroup(of: TaskResults.self) { group in
+    group.addTask { .first(await intTask()) }
+    group.addTask { .second(await stringTask()) }
+
+    var results: [Any] = []
+    for await res in group {
+        switch res {
+        case .first(let value):
+            results.append(value)
+        case .second(let value):
+            results.append(value)
+        }
+    }
+    print(results)
+}
+
+// => [42, "foo"]</textarea><button id="copy-button-12_8" onclick="copySnippet('12_8')">Copy</button></div></div></div><div class="card"><div class="flex"><a id="concurrency/basic-actor"></a><h3><a href="#concurrency/basic-actor" class="anchor">basic actor</a></h3><pre class="swift"><code><span class="keyword">actor</span> AtomicStorage {
+
+    <span class="keyword">private var</span> storage: [<span class="type">Int</span>: <span class="type">String</span>]
+    
+    <span class="keyword">init</span>() {
+        <span class="keyword">self</span>.<span class="property">storage</span> = [:]
+    }
+        
+    <span class="keyword">func</span> get(<span class="keyword">_</span> key: <span class="type">Int</span>) -&gt; <span class="type">String</span>? {
+        storage[key]
+    }
+    
+    <span class="keyword">func</span> set(<span class="keyword">_</span> key: <span class="type">Int</span>, value: <span class="type">String</span>) {
+        storage[key] = value
+    }
+
+    <span class="keyword">var</span> allValues: [<span class="type">Int</span>: <span class="type">String</span>] {
+        storage
+    }
+}
+
+<span class="keyword">let</span> storage = <span class="type">AtomicStorage</span>()
+<span class="keyword">await</span> <span class="call">withTaskGroup</span>(of: <span class="type">Void</span>.<span class="keyword">self</span>) { group <span class="keyword">in
+    for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">100</span> {
+        group.<span class="call">addTask</span> {
+            <span class="keyword">await</span> storage.<span class="call">set</span>(i, value: <span class="string">"foo"</span>)
+        }
+    }
+}
+<span class="call">print</span>(await storage.<span class="property">allValues</span>)</code></pre><div id="tooltip-12_9" class="tooltip"><textarea id="snippet-code-12_9" class="original-code">actor AtomicStorage {
+
+    private var storage: [Int: String]
+    
+    init() {
+        self.storage = [:]
+    }
+        
+    func get(_ key: Int) -> String? {
+        storage[key]
+    }
+    
+    func set(_ key: Int, value: String) {
+        storage[key] = value
+    }
+
+    var allValues: [Int: String] {
+        storage
+    }
+}
+
+let storage = AtomicStorage()
+await withTaskGroup(of: Void.self) { group in
+    for i in 0..<100 {
+        group.addTask {
+            await storage.set(i, value: "foo")
+        }
+    }
+}
+print(await storage.allValues)</textarea><button id="copy-button-12_9" onclick="copySnippet('12_9')">Copy</button></div></div></div></div></section><section><a id="miscellaneous"></a><h2><a href="#miscellaneous" class="anchor">Miscellaneous</a></h2><div class="grid-321"><div class="card"><div class="flex"><a id="miscellaneous/basic-result-builder"></a><h3><a href="#miscellaneous/basic-result-builder" class="anchor">basic result builder</a></h3><pre class="swift"><code><span class="keyword">@resultBuilder
+public enum</span> StringBuilder {
+    
+    <span class="keyword">public static func</span> buildBlock(
+        <span class="keyword">_</span> components: <span class="type">String</span>...
+    ) -&gt; [<span class="type">String</span>] {
+        components
+    }
+}
+
+<span class="keyword">@StringBuilder func</span> getStrings() -&gt; [<span class="type">String</span>] {
+    <span class="string">"foo"
+    "bar"
+    "baz"</span>
+}
+
+<span class="keyword">let</span> values = <span class="call">getStrings</span>()
+
+<span class="call">print</span>(values)
+<span class="comment">// =&gt; ["foo", "bar", "baz"]</span></code></pre><div id="tooltip-13_1" class="tooltip"><textarea id="snippet-code-13_1" class="original-code">@resultBuilder
+public enum StringBuilder {
+    
+    public static func buildBlock(
+        _ components: String...
+    ) -> [String] {
+        components
+    }
+}
+
+@StringBuilder func getStrings() -> [String] {
+    "foo"
+    "bar"
+    "baz"
+}
+
+let values = getStrings()
+
+print(values)
+// => ["foo", "bar", "baz"]</textarea><button id="copy-button-13_1" onclick="copySnippet('13_1')">Copy</button></div><p class="references">References: <a href="https://theswiftdev.com/result-builders-in-swift/" target="_blank">Result builders in Swift</a></p></div></div><div class="card"><div class="flex"><a id="miscellaneous/basic-subscript"></a><h3><a href="#miscellaneous/basic-subscript" class="anchor">basic subscript</a></h3><pre class="swift"><code><span class="keyword">struct</span> Config {
+    <span class="keyword">private var</span> values: [<span class="type">String</span>: <span class="type">String</span>]
+    
+    <span class="keyword">init</span>() {
+        <span class="keyword">self</span>.<span class="property">values</span> = [
+            <span class="string">"foo"</span>: <span class="string">"bar"</span>
+        ]
+    }
+    
+    <span class="keyword">subscript</span>(index: <span class="type">String</span>) -&gt; <span class="type">String</span>? {
+        <span class="keyword">get</span> {
+            values[index]
+        }
+        <span class="keyword">set</span> {
+            values[index] = newValue
+        }
+    }
+}
+
+<span class="keyword">let</span> config = <span class="type">Config</span>()
+
+<span class="keyword">guard let</span> value = config[<span class="string">"foo"</span>] <span class="keyword">else</span> {
+    <span class="call">fatalError</span>(<span class="string">"Missing config key."</span>)
+}
+
+<span class="call">print</span>(value) <span class="comment">// =&gt; bar</span></code></pre><div id="tooltip-13_2" class="tooltip"><textarea id="snippet-code-13_2" class="original-code">struct Config {
+    private var values: [String: String]
+    
+    init() {
+        self.values = [
+            "foo": "bar"
+        ]
+    }
+    
+    subscript(index: String) -> String? {
+        get {
+            values[index]
+        }
+        set {
+            values[index] = newValue
+        }
+    }
+}
+
+let config = Config()
+
+guard let value = config["foo"] else {
+    fatalError("Missing config key.")
+}
+
+print(value) // => bar</textarea><button id="copy-button-13_2" onclick="copySnippet('13_2')">Copy</button></div><p class="references">References: <a href="https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html" target="_blank">Subscripts</a></p></div></div></div></section><footer><p>Created by <a href="https://twitter.com/tiborbodecs/" target="_blank">Tibor Bödecs</a> &middot; 2022</p></footer><script type="text/javascript" src="./js/main.js"></script></body></html>
